@@ -1,0 +1,87 @@
+﻿measureup 70-698 Installing Win10
+
+120 five steps to create an image backup with no optical drive
+open control panel System and Security
+choose Backup and Restore
+select Create system image
+select the Location for the backup files
+create a Recovery drive on a USB stick
+
+121 which tool to auto backup user files maintaining access to all versions of the files
+File History
+
+122 which tool backup some files from USB and wipe files
+WBAdmin
+
+123 which tool to back up secondary drive formatted with ReFS
+File History
+
+124 two ways to restart computer and boot to Advanced startup options page
+shift-click Restart on the start menu
+run shutdown /r /o in a command prompt
+
+125 File History is on, four ways to ensure access to previous file versions
+on Win10 use WBAdmin to back up data
+add the data folder to the Documents Library
+on Win7 use Backup and Restore to backup data
+add the data folder to the File History
+
+126 restore OneDrive files after they are deleted and the Recycle Bin is emptied
+restore the files from the OneDrive for Business recycle bin
+
+127 enable system restore points for all domain machines
+create a scheduled task with group policy and include ExecuteScheduledSPPCreation
+
+128 remove ability of users to use system restore and remove previous restore points
+configure the Turn off System Restore group policy setting as enabled
+
+129 OneDrive for Business library files corrupted need to recover file
+access Version History through the Office 365 portal
+
+130 recover computer with recovery drive and installation files on a removable drive
+boot from recovery drive and run System Restore
+
+131 powershell to temporarily disable User Account Control for a domain account
+Set-ADAccountControl
+
+132 which two domain user groups can use a Microsoft account to sign in
+Local Users, Local Administrators
+
+133 ensure domain machines use Kerberos v5
+create GPO under IPSec settings to require computer authentication
+
+134 use what for authentication when implementing multifactor authentication
+Windows Hello for Business
+
+135 let a Win10 machine access shared resources on the network
+enable network discovery on the Win10 machine
+
+136 ensure clients run only applications approved and signed
+Device Guard
+
+137 ensure you are not prompted to save your custom MMC each time you use it
+set the console to User Mode
+
+138 command to create a MMC that will let you manage 32-bit Win10 devices
+run mmc /a /32
+
+139 powershell to change startup type for services
+Get-Service bits, wuauserv | Set-Service -startuptype "manual"
+
+140 locate all printer drivers in Device manager
+use Device Manager to show hidden devices
+
+141 file format to use for a task file that can be imported into Task Scheduler
+.XML
+
+142 stop a custom snapin from prompting you to save it when you close it
+modify the console mode - set it to one of the User modes
+
+143 tool to ensure utility runs each Sunday on a remote computer
+Task Scheduler
+
+144 see the USB power and bandwidth allocations for a USB hub
+Device Manager
+
+145 powershell to use the TroubleshootingPack to troubleshoot a problem
+Get-TroubleshootingPack -Path "C:..path" -AnswerFile "file.xml"

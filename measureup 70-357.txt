@@ -1,0 +1,548 @@
+﻿1 using stackpanel display buttons vertically in portrait and horizontally in landscape
+  AdaptiveTrigger MinWindowWidth = 500
+  Setter Target = panelMenu.Orientation Value = Horizontal
+
+2 align panel along top and left
+  RelativePanel.AlignTopWithPanel
+  RelativePanel.AlignLeftWithPanel
+
+2 align panel along bottom of previous panel and centered
+  RelativePanel.Below="PanelA"
+  RelativePanel.AlignVerticalCenterWithPanel
+
+2 align panel along bottom and centered
+  RelativePanel.AlignBottomWithPanel
+  RelativePanel.AlignRightWith="PanelC"
+
+3 which controls have these properties: BorderBrush, BorderThickness, CornerRadius
+  RelativePanel, Grid, StackPanel, ContentPresenter
+
+4 markup to detect when window size is >= 720 px
+  AdaptiveTrigger MinWindowWidth="720"
+
+5 optimize xaml that includes GradientStopCollection and GradientStops
+  remove the GradientStopCollection and keep the GradientStops
+
+6 which panel class does not support fluid layout
+  canvas
+
+7 using grid two ways to make column use the remaining space
+  <ColumnDefinition Width="*"/>
+  <ColumnDefinition/>
+
+8 grid one column one row, width fill screen height adapt to content
+  ColumnDefinition Width="*"
+  RowDefinitition Height="Auto"
+
+9 which layout control can align to top or other edge of the screen
+  Relative Panel
+
+10 most efficient unique identifier for ResourceDictionary elements
+   x:Key
+
+10 x:Key versus x:Name for ResourceDictionary
+   both can identify an element but x:Name must be initialized 
+
+10 what does x:Uid do
+   provides a unique identifier for an element in a XAML page
+
+11 ensure your custom handler is executed when the system back button is pressed
+   GetForCurrentView().BackRequested += HandleGoBackEvent;
+
+12 detect the platform (desktop/mobile) where the app is running
+   Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily=="Windows.Mobile"
+
+12 possible values of the DeviceFamily property
+   Desktop, Mobile, Team, IoT, Holographic, Xbox
+
+13 mode for SplitView control: Overlay mode
+   the pane is hidden until it is opened by the user, and it overlays the content area
+
+13 mode for SplitView control: CompactOverlay mode
+   leaves a narrow portion of the pane always visible wide enough to show icons
+
+13 mode for SplitView control: Inline mode
+   the pane is always visible and does not overlay the content area
+
+13 mode for SplitView control: CompactInline mode
+   icons are always visible, but it overlays the content area
+
+14 let users browse back in history on any device even those without physical back buttons
+   AppViewBackButtonVisibility.Visible
+
+15 determines if app has been explicitly launched by a user
+   PrelaunchActivated property
+
+16 in which method do you use the TileID property in App.xaml.cs
+   OnLaunched
+
+17 ensure data is saved so it can be restored when app is activated or resumed
+   save the data whenever it is modified
+
+18 navigation structure used to show information hierarchy three layers deep
+   Hub
+
+18 what is a hub navigation structure used for
+   to display layers of information, typically three layers deep
+
+18 how does Hub navigation structure work
+   shows header and sub-content, when sub-content clicked additional details shown
+
+19 navigation structures: top row always shows with content below, when top button clicked, content changes
+   Navigation Pane, Pivot and Tabs
+
+19 how does the Pivot and Tabs navigation structure work
+   shows text labels for navigation, clicking label displays content below
+   used for apps with five or fewer pages and no hierarchy
+
+19 how does the Navigation Pane navigation structure work
+   shows top level links, when link clicked content displayed
+
+19 navigation structure: list of related information, click any item to display details
+   Master/Details
+
+19 how does Master/Details navigation structure work
+   list of related items, clicking one shows details
+   typically used in a two-level hierarchy
+
+20 allow background thread to update UI controls
+   in the background task, use the Dispatcher.RunAsync() method
+
+20 how schedule work on the UI thread
+   use Dispatcher.RunAsync()
+
+21 in MVVM what does Command event do
+   trigger action in the ViewModel
+
+21 in MVVM what does Click event do
+   trigger action in XAML code behind class
+
+21 in MVVM use which event to execute an action defined in the ViewModel
+   the Command event
+
+22 in MVVM which controller is used to Trigger input events
+   the View
+
+22 in MVVM which controller is used to Process input events
+   the ViewModel
+
+23 Students app should start Marking app programmatically
+   in Students app implement deep linking using Launcher.LaunchUriForResultsAsync
+
+23 Marking app should automatically display assignment submitted by student
+   in Marking app override the OnActivated event handler
+
+23 Students app should update student record with result from Marking app
+   in Marking app invoke ReportCompleted method of the ProtocolForResultsOperation object
+
+24 programmatically display user interface to share data with other apps
+   Windows.ApplicationModel.DataTransfer.DataTransferManager.ShowShareUI();
+
+25 use which type of object to send data to an app servivce
+   a ValueSet
+
+26 which class contains the data the user will share with another application
+   DataPackage class
+
+26 which class lets the application supply the content to be shared
+   DataRequest Class
+
+27 method fired in app when app is launched from another app
+   OnActivated
+
+27 app redirected to another page when activated where specify the other page
+   App.xaml.cs
+
+28 use what to synchronize data between multiple devices
+   Roaming app data
+
+28 user should see same config when using same credentials an other devices
+   use Roaming app data
+
+28 use what to preserve data between sessions on the same device
+   Local app data
+
+28 use what to cache data during the current session
+   Temporary app data
+
+29 write date to file when user logs in
+   StorageFolder...
+   StorageFile...
+   GetFileAsync()
+   WriteTextAsync(savefile, "some text")
+
+30 file picker line to get access to a folder but not a file
+   var picker = new Windows.Storage.Pickers.FolderPicker();
+
+30 file picker line to get access to a file
+   var picker = new Windows.Storage.Pickers.FileOpenPicker();
+
+30 file picker make it start in the Pictures folder by default
+   picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+
+30 file picker make it show thumbnails by default
+   picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+
+30 file picker open file select so user can select the file
+   Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
+
+31 process list of files and folders
+   public void ProcessTree(IReadOnlyList<IStorageItem>items)
+
+31 iterate through list of files and folders
+   foreach(IStorageItem item in items)
+
+31 determine if IStorageItem is a file or a folder
+   if (item.IsOfType(StorageItemTypes.Folder))
+
+32 use file picker with suggested location of Downloads
+   FileOpenPicker fp = new FileOpenPicker();
+   fp.SuggestedStartLocation = PickerLocationId.Downloads;
+
+32 use file picker to let the user pick a single file
+   PickSingleFileAsync();
+
+33 sqlite non-transaction code to create a record and confirm it
+   Add method, then SaveChanges method
+
+33 sqlite code to update a record
+   Update method
+
+33 sqlite code to confirm all operations in a transaction block
+   Commit method
+
+34 store messages in an embedded database derive class from what
+   DbContext 
+
+34 store messages in an embedded database use what data type for container for Message objects
+   DbSet
+
+34 store messages in an embedded database use what data type for database context
+   DbContextOptionsBuilder
+
+34 store messages in an embedded database use what method for the database context
+   db.UseSqlite("Filename=Messages.db");
+
+35 store messages in an embedded database create or update database schema when app initialized
+   db.Database.Migrate()
+
+36 let you set properties such as IsRequired for properties in the model
+   Fluent API
+
+36 can be used to set properties, written on line above property being set
+   Data Annotations
+
+36 which takes precedence Fluent definition or data annotation?
+   Fluent definition takes precedence
+
+36 if a property is marked [Required] by an annotation but not defined in the Fluent definition
+   then it is required
+
+37 using MVVM what does MainPage constructor need
+   this.InitializeComponent()
+   this.ViewModel = new MyViewModel();
+
+38 xaml with binding need to load data as quickly as possible
+   use {x:Bind ObjectName} instead of {x:Bind} so binding is done at compile time
+
+38 xaml binding at compile time
+   <TextBox Text={x:Bind MyData}/>
+
+38 xaml binding at run time
+   <TextBox Text={Binding MyData}/>
+
+38 xaml binding which is quickest {x:Bind MyData} or {Binding MyData}
+   {x:Bind MyData}
+
+39 json get numeric value ("timezone" in this example)
+   Double tzone = jsonObject.GetNamedNumber("timezone")
+
+39 json get numeric value ("timezone" in this example) and supply default 0 if value missing
+   Double tzone = jsonObject.GetNamedNumber("timezone", 0)
+
+39 json get string value ("timezone" in this example) and supply default "" if value missing
+   String tzone = jsonObject.GetNamedValue("timezone", "")
+
+39 json get boolean value ("timezone" in this example)
+   bool tzone = jsonObject.GetNamedBoolean("timezone")
+
+40 two ways to create json array able to hold numbers
+   JsonArray ja = new JsonArray() 
+   JsonArray ja = new JsonObject()
+
+40 two ways to add a number value to a json array
+   myArray.Add(JsonValue.CreateNumberValue(num);
+   myArray['key'] = JsonValue.CreateNumberValue(num);
+
+41 define a data binding for TextBox with data item named Version
+   <TextBox Text={Binding Version}/>
+
+41 data binding with data item named Version, what is wrong: <TextBox Text={Version}/>
+   missing the key word Binding before the item name Version
+
+42 ensure only try to use vibration class on a supported device family
+   use method Windows.Foundation.Metadata.ApiInformation.IsTypePresent()
+
+42 property indicating that device family supports vibration
+   Windows.Phone.Devices.Notification.VibrationDevice
+
+43 which method to determine the capabilities of a device
+   ApiInformation.IsTypePresent
+
+43 method to check if a control exists on a device
+   IsTypePresent
+
+43 method to see if a particular method of a class exists
+   IsMethodPresent
+
+43 method to see if a particular enumeration of a class exists
+   IsEnumPresent
+
+44 declare capabilities of your app: get location from device's gps
+   Location capability
+
+44 declare capabilities of your app: post a text message
+   Internet (Client) capability
+
+44 declare capabilities of your app: insert photo captured with webcam
+   Webcam capability
+
+44 declare capabilities of your app: access photo collection without user interation
+   Picture Library capability
+
+44 declare capabilities of your app: detect nearby devices
+   Proximity capability
+
+44 declare capabilities of your app: act like a server on the internet
+   Internet (Client and Server) capability
+
+45 where in your application do you declare the Location capability
+   in the file Package.appxmanifest
+
+45 where are application capabilities defined
+   in the application's package manifest
+
+45 which file is the application package manifest
+   the file Package.appxmanifest
+
+45 which file is the entry point of the application
+   the file App.xaml.cs
+
+45 which file contains the declaration of resources that will be used in the application
+   the file App.xaml
+
+45 which file contains assembly info such as name, description and version
+   the file AssemblyInfo.cs
+
+45 to enable the Location capabilty what XML would you use
+   <DeviceCapability Name="location"/>
+
+46 what capabilty to read and write data stored on LAN
+   the privateNetworkClientServer capability
+
+46 what capability to receive but not send data from the Internet
+   the internetClient capability
+
+46 what capability to send and receive data from the Internet
+   the internetClientServer capability
+
+46 what capability to get low-level access to hardware for IoT devices
+   the lowLevelDevices capability
+
+47 audio app what code can record audio
+   public MediaCapture
+   private InMemoryRandomAccessStream
+   public async void Record()
+       MediaCaptureInitializationSettings
+       StreamingCaptureMode.Audio
+       MediaCapture
+       await InitializeAsync
+       MediaEncodingProfile.CreateMp3
+       await StartRecordToStringAsync(stream)
+
+48 enable media control if available otherwise provide custom controls
+   bool hasMediaControl = false
+   if (ApiInformation.IsApiContractPresent("Windows.Media.MediaControlContract",2,0)
+      hasMediaControl = true
+
+49 app provide call history if phone features available
+   PhoneCallHistoryEntryReader
+   string ch = "Windows.ApplicationModel.Calls.CallsPhoneContract"
+   if (!ApiInformation.IsApiContractPresent(ch, 2, 0))
+      return null
+   PhoneCallHistoryStore = null
+   PhoneCallHistoryEntryReader r = GetEntryReader
+   return r
+
+50 support two-factor authentication, biometrics, devices without TPM
+   which two technologies together can you use
+   Windows Hello and Microsoft Passport
+
+51 six actions to integrate Windows Passport into your app
+   check for registered PIN
+   obtain Passport authentication
+   retrieve public key
+   send challenge from the back end
+   sign the challenge with private key
+   validate signature with public key
+
+52 securely store and roam credentials under Microsoft account
+   implement the PasswordVault class from Windows.Security.Credentials
+
+53 about credential locker
+   is a property of the password vault
+   protects small amounts of data
+   you should store a password in the vault only after the user has successfully signed in
+
+53 is it safe to store passwords in local storage?
+   no because local storage does not encrypt data
+
+54 authenticate using Facebook identity provider and Azure app service
+   await App.MobileService.LoginAsync(MobileServiceAuthenticationProvider.Facebook)
+
+55 using Live SDK to authenticate user
+   app will authenticate user's Microsoft account
+   able to access One Drive, One Drive for Business and Sharepoint Online
+
+56 using OAuth which access object gives Authorization Code
+   Application ID
+
+56 using OAuth which access object gives Access Token
+   Authorization Code
+
+56 using OAuth which access object gives Access to resource
+   Access Token
+
+56 order for using OAuth authentication
+   Application ID -> Authorization Code -> Access Token -> Access to resources
+
+57 using OAuth and Azure what data do you need to begin
+   Application ID
+
+58 what capability must you declare to authenticate using internal company credentials
+   Enterprise authentication
+
+59 what manipulation mode to handle events to support custom touch gesture
+   Any value other than None or System
+
+60 can any UIElement be used as a drop target if AllowDrop is true
+   yes and every UIElement has an AllowDrop property
+
+60 what does DataPackageOperation.Link do
+   signals that link to data was created when copying and pasting via the clipboard
+
+60 is the DragStarting event triggered when the user begins a drag operation
+   yes, DragStarting event is triggered when user starts dragging a UIElement
+
+60 will the drop always be successful if the user releases over the drop target
+   no, it is possible for the drop to fail so you must check DataPackageOperation
+
+60 what does DataPackageOperation.None signal
+   that the drag and drop operation failed
+
+61 use which constraint class with the pre-defined grammar for speech recognition
+   SpeechRecognitionTopicConstraint
+
+61 what does SpeechRecognitionTopicConstraint do
+   provide grammar constraint for search, dictation and form filling
+
+61 what does SpeechRecognitionListConstraint do
+   lets you create a custom grammar to recognize specific words and phrases
+
+61 what does SpeechRecognitionGrammarFileConstraint do
+   defines a custom grammar from a Speech Recognition Grammar Specification file
+
+61 what does SpeechRecognitionVoiceCommandDefinitionConstraint do
+   defines a custom grammar from a Voice Command Definition VCD file
+
+62 create voice recognition instance that will allow searching for dictated text
+   new Windows.Media.SpeechRecognition.SpeechRecognizer()
+
+63 let app get info from searches initiated from Cortana
+   use the OnActivated method with the VoiceCommandActivatedEventArgs
+
+64 extend Cortana to launch app, search movies and see results
+   create voice commands in the Voice Command Definition file
+   register the VCD file when the app starts
+   handle the voice command on app activation
+
+65 in a Voice Command Definition file which element to define phrase to launch app
+   The CommandPrefix element
+
+65 in a Voice Command Definition file what does the CommandPrefix element do?
+   declare phrase used to open the app
+
+65 in a Voice Command Definition file what does the Example element do?
+   lets Cortana give a specific answer when you ask for help about the app
+
+65 in a Voice Command Definition file what does the Command element do?
+   contains info about an action that can be invoked through Cortana
+
+65 in a Voice Command Definition file what does the ListenFor element do?
+   defines the phrase or word to execute the command
+
+66 which file format is used for a Voice Command Definition file?
+   The XML format
+
+67 five actions to launch program through Cortana
+   override Application.OnActivated event
+   check that IActivatedEventArgs.Kind is equal to VoiceCommand
+   get reference to VoiceCommandActivatedEventArg object
+   check Result property for a SpeechRecognitionResult object
+   query the Text property to get the voice command
+
+68 which class for modal windows
+   ContentDialog
+
+69 which control to block interaction until user deals with dialog
+   Dialog control
+
+69 which control to provide access to instant actions
+   Context Menu
+
+69 which control to provide access to common tasks
+   CommandBar
+
+69 which control provides contextual popups
+   Flyouts
+
+70 xaml for an app bar, caption that says 'Slideshow'
+   <CommandBar.Content>
+   <TextBlock Text="Slideshow" Margin="12,14"/>
+
+70 xaml for an app bar, button labeled 'Back'
+   <AppBarButton Icon="Back" Label="Back" Click="Command Click"/>
+
+70 xaml for an app bar, separator
+   <AppBarSeparator/>
+
+70 what elements are inside a <CommandBar> element
+   AppBarButton, AppBarSeparator, CommandBar.Content
+
+71 use what to display a panel that animates in and out from the edge
+   Flyout
+
+72 use what to show a menu that holds buttons related to the content 
+   Menu Flyout
+
+73 defining a button in XAML, tooltip:
+   may extend above the top of the screen
+   can be set to display below other controls
+   can display an image as well as text
+   is ignored on phones? only applies to desktop devices?
+
+74 where store settings that will be shared across a user's devices
+   use ApplicationData.RoamingSettings
+
+75 app for ink input, what does InkPresenter processes all input as
+   by default InkPresenter processes all input as strokes and erase strokes
+
+75 app for ink input, what is the working unit of the InkPresenter
+   the working unit of the InkPresenter is the stroke
+
+75 app for ink input, what does InkCanvas only processes input from
+   by default InkCanvas only processes input from a pen
+
+75 do you need to instantiate an instance of the InkPresenter class
+   No you do not need to instantiate an instance of the InkPresenter class
+

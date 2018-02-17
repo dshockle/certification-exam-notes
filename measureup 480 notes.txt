@@ -1,0 +1,304 @@
+given list of handlers register each with onclick event
+a: myBtn.addEventListener("click", handler);
+
+prevent form submission if choice not made
+a: use var isValid = false and set it true when choice made
+   return function result in button onclick event
+
+get two alerts on click but only want one alert
+a: use event.cancelBubble = true;
+
+how generate your own exception
+a: use the keyword "throw"
+
+which rule applies css flexible box layout
+a: display: flex;
+
+given x=1 and y="1" which is true
+a: x==y and x!==y
+   but not x!=y or x===y
+
+given submit(this) what is this
+a: the element that fired the event
+
+to serialize form elements as JSON
+a: use jquery method serializeArray
+
+using css and jquery find every para that is 
+the third para of its parent
+a: ("p:nth-of-type(3)")
+
+css detect mobiles with width of 480 or less
+a: @media screen and (max-width: 480px){
+
+css don't show advert side bar 
+a: .adbar { display: none }
+
+rule set for div element
+total width max 250 pixels
+solid gray border width 5 pixels
+space around border 10 pixels
+a: div{ width: 220px
+        border: solid 5px gray
+        margin: 10px}
+
+convert json string to javascript object
+a: either JQuery.parseJSON or JSON.parse
+
+rotate element (box with text) 90 degrees
+a: transform:rotate(90deg) or 
+   transform:rotateZ(90deg)
+
+convert returned JSON string into object
+a: var doc = JSON.parse(request.responseText);
+
+event when element loses focus
+a: onblur
+
+modify two img elements so images appear left and right of text
+a: set style="float:left" and style="float:right" in img tags
+
+create and initialize array with elements "one" and 1
+a: var array = ["one", 1];
+
+create 2 element array then set element to "one" and other to 1
+a: var array = new Array(2)
+   array[0] = "one"
+   array[1] = 1
+
+what difference between (":button") and ("button")
+a: $(":button") includes <input type="button"> elements
+
+what property determines if audio is muted
+a: audio.muted
+
+Worker object controls background task, how stop
+a: use worker object's method .terminate()
+
+css how stop long word going beyond boundary of para
+a: use word-wrap: break-word
+
+css background to red and transparency 80%
+a: background: rgba(255,0,0,.2) or
+   background-color:#FF0000; opacity:0.2
+
+implement callback using websocket
+a: socket.onmessage = function(event)
+
+validate user-entered JSON text
+a: use JSON.parse(value) wrapped in try-catch block
+
+how add methods or properties to predefined object
+a: use the object's "prototype" property
+
+create the main menu using a semantic tag
+a: use the semantic tag "<nav>"
+
+css if landscape all sections 400 width 200 height
+a: @media all and (orientation:landscape)
+   {section{width:400px;height:200px;}}
+
+css if portrait all sections 200 width 400 heigth
+a: @media all and (orientation:portrait)
+   {section{width:200px;height:400px;}}
+
+jquery turn table row background green on mouse enter
+(this).parent().parent().css("background-color", "green")
+
+dynamically create input element
+a: var input=document.createElement("input");
+   input.style.display="block";
+   input.setAttribute("type", "text");
+
+dynamically add input element to section
+a: var section=document.getElementById("section1");
+   section.appendChild(input)
+
+return string "even" or "odd" depending on parameter
+a: return number % 2 == 0 ? "even" : "odd";
+
+javascript object that has two properties
+a: var person = {fn:"John",ln:"Doe"};
+
+javascript object that has two properties, old way
+a: function Person(){ this.fn="John";this.ln="Doe";}
+   var person = new Person();
+
+what does event boolean property ".returnValue" do
+a: determines whether event's default behavior occurs
+
+after parsing JSON into object how remove some properties
+a: set those property values to "undefined"
+
+cache manifest so Main.js is cached but not Functions.js
+a: CACHE MANIFEST
+   Main.js
+   NETWORK:
+   Functions.js
+
+how run intensive js in the background keep responsive UI
+a: use Web Workers
+
+how decode encoded URL into original URL
+a: use decodeURIComponent
+
+write js code to test if pattern exists in data variable
+a: use the test method of the regex object
+   var regex = /some pattern/;
+   regex.text(data);
+
+how do you control element behavior in response to event
+a: use keyord "return" before function name
+   and return a boolean from that function
+   eg onsubmit="return testFailed();"
+
+if you return true from an event handler
+a: the element's default behavior will occur
+
+if you return false from an event handler
+a: the element's default behavior will not occur
+
+css rule so paras have same border style as parent
+a: p{border:inherit}
+
+ensure image downloaded as binary
+a: before invoking send set response type to 'blob'
+
+how extend function
+a: attach to original function's prototype property
+   Somefunction.prototype.Newproperty=function()
+
+how find location of user
+a: use navigator.geolocation
+
+what is determined by the flex-order attribute
+a: order items appear within flex-box, note 
+   if no order listed zero is assumed
+
+how display color wheel for user to choose color
+a: use input type="color"
+
+how tell browser to remember user choice
+a: use autocomplete="on"
+
+input field only allow values between 0 and 50
+a: input type="number" min="0" max="50"
+
+input field only allow values divisible by 3
+a: input type="number" step="3"
+
+using geolocation how get longitude and latitude
+a: use coords.latitude and coords.longitude
+
+convert JSON text back into its original object format
+a: user parse function of JSON object
+
+css prevent words breaking 
+a: word-break: keep-all
+
+get property value from postMessage sent by Worker
+a: use e.data.propertyName
+
+hide button but reserve space to dynamically show
+a: button style="visibility:hidden"
+
+how access variable from different scope
+a: create a new variable set it equal to other one
+
+which storage to: store up to 1 meg, 
+survives browser restart, not stored at server
+a: user Local Storage
+
+event type to listen to to receive WebSocket messages
+a: message
+
+function for leap year rules
+a: return year%400==0||year%4==0&&year%100!=0;
+
+you want an anchor link to have same green color 
+as the enclosing paragraph
+a: add style attribute to the "a" element and
+   use either color:inherit or color:green
+
+want rectangle to fill left half of 200x200 canvas
+a: canvas.getContext("2d")
+   context.fillRect(0,0,100,200)
+
+global variables that are not initialized are what
+a: set to NaN //not a number
+
+set bg color of all input elements in table cells to yellow
+a: table td>input{background-color:yellow}
+
+html make document outline
+a: use <section> tags with heading tags
+
+jquery highlight paras that have matching text "target"
+a: $("p:contains('target')")
+
+semantic tags to replace structural elements
+a: use nav and section instead of named divs
+
+specify text in search engine results for your page
+a: user the "meta" tag
+
+css properties to divide list into multi columns
+a: columns and column-count
+
+encode elements into string send to server in ajax
+a: use serialize method
+
+if variables are initialized using keyword "this"
+a: then also use "this" when setting them to new values
+
+what color is #FFFFFF what color is #666666
+a: FFFFFF is white and 666666 is gray
+
+what style should you use to add drop shadows to text
+a: text-shadow:
+
+how call function "Process()" when user clicks button
+a: use onclick attribute of the button tag
+a: <button id="button1" onclick="Process();">Submit</button>
+
+css selector to match anchor tags to https pages
+a: a[href^="https://"]
+
+button initially hidden and not taking up any space
+a: button style="display:none"
+
+css rule to embed a custom WOFF font
+a: @font-face
+
+input fails when entering relative URL
+a: set pattern attribute to a regular expression and
+   set that regex to allow relative URLs
+
+how retrieve XML data from a web service
+a: use var doc = request.responseXML;
+
+after you get XML response how get one node of it
+a: use selectSingleNode
+   data = doc.selectSingleNode
+
+after you get XML node from responce how get value
+a: use value property of the node
+   var title = data.value
+
+generate URL using text entered by user
+a: use encodeURIComponent function
+
+position button relative to another
+use button style="position:relative"
+
+ensure Submit button is 50 pixels right of Cancel button
+a: <button style="position:relative;left:50">Submit</button>
+
+when multiple css selectors apply to an elemennt
+a: most specific one is used
+
+how change size of h1 heading tags
+a: nest them in section tags, each section makes 
+   the nested heading smaller so an h1 nested in 
+   two section tags is the same size as an h3 tag
+

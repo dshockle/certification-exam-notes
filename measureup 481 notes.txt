@@ -1,0 +1,153 @@
+ensure a css ruleset is applied when app resized to less than 500 pixels
+a: @media screen and (max-width:499px)
+
+prevent app bar disappearing when user clicks outside
+a: <div data-win-control="WinJS.UI.AppBar" data-win-options="{sticky:'true'}/>
+
+need to update even if app not running
+a: Push notification delivery method
+
+ensure picker returns only email addresses
+a: picker.selectionMode = contacts.ContactSelectionMode.fields;
+   picker.desiredFieldsWithContactFieldType.append(contacts.ContactFieldType.email);
+
+css rule for app to display text spanning three columns
+a: start rule with columns:auto 3;
+
+allow other apps to choose contacts from your app
+a: add following markup to package manifest
+   <Extension Category="windows.contactPicker" StartPage="ContactPicker.html"/>
+
+a app section must display HTML content from the measureup.com
+a: use webview
+a: <x-ms-webview src="http://www.measureup.com"/>
+
+send toast notification even if app not running
+a: use Scheduled notification delivery method
+
+need to authenticate users with OAuth2 website and return to your site
+a: register your doain with the authentication service
+   create page in your domain to redirect to authentication service
+   in your app include var url = "https://authentication service url?
+   redirect=your url" + appUri.absoluteUri;
+
+get query users use to select your app in Search charm
+a: use onactivated and detail.queryText
+a: WinJS.Application.onactivated = function(e){
+     if(e.detail.kind==activation.ActivationKind.search)
+       {var query = e.detail.queryText;}};
+
+type of component useable by apps written in any language
+a: WinRT
+
+create toast that uses launch parameter
+a: in toast XML file have param:value in the "launch=" attribute
+   in code each parameter will be in the params collection
+
+how use second parameter of navigate method?
+example: WinJS.Navigation.navigate("/page2.html","Edit");
+a: use the onnavigate method and the .detail.state property
+a: WinJS.Navigation.onnavigated = function(e){var param = e.detail.state;}
+
+bind array to ListView control hosted by div element
+a: var ctrl = new WinJS.UI.ListView(listView, null);
+   var binding = new WinJS.Binding.List(categoryArray);
+   ctrl.itemDataSource = binding.dataSource
+
+select which capability so your app can post content to web site using HTTP
+a: use the capability "Internet (Client)"
+
+what is the max size per package for store apps
+a: 8 GB per package for win81, 2 GB per package for win80
+
+tool to determine if app meets store requirements
+a: Windows App Certification Kit
+
+win81 replacement for win80 "if layout state=snapped"
+a: if(windowWidth==320)
+
+app create new contact
+a: var contacts = Windows.ApplicationModel.Contacts
+   var contact = new contacts.Contact()
+
+log user navigation between pages
+a: write function that uses document.location and event.detail.location
+
+immediately update data object and bound control
+a: use WinJS.Binding.as(statusUpdate) and
+       binding.property="value";
+
+markup to create button similar to windows back button
+a: <button class="win-backbutton"/>
+
+config app so it can save files to Documents folder
+a: use <Capability Name="documentsLibrary"/>
+
+apply css rule set when app rotated to portrait mode
+a: @media screen and (orientation:portrait)
+
+control for users to swipe horizontally to navigate
+a: FlipView control
+
+control for users to zoom between two views of content
+a: SemanticZoom control
+
+control using one template repeated for each item
+a: Repeater control
+
+control user can dismiss by clicking it or tapping off it
+a: Flyout control
+
+detect if user touched canvas (not using pointing device)
+a: check PointerDeviceType
+a: if(pointerType==Windows.Devices.Input.PointerDeviceType.touch)
+
+set text of span element to value of InvalidCredentials resource key
+a: <span data-win-res="{textContent:'/Errors/InvalidCredentials'}"/>
+
+bind a resource key to an element property or attribute
+a: use the "data-win-res" attribute of the element and
+   place binding in curly braces {}
+
+control sections with different data sources and widths
+a: Hub control
+
+control with a single data source
+a: ListView control
+
+control with two content controls
+a: SemanticZoom control
+
+update game tile as soon as game ends
+a: Local notification delivery method
+
+app color preferences syncd across all devices
+a: use Windows.Storage.ApplicationData.current.roamingSettings
+
+save preference named Background with value of Orange
+a: settings.values["Background"]="Orange";
+
+display authentication ui using web authentication
+a: using Authentication.Web
+
+convert hand-written notes to text
+a: use Windows.UI.Input.Inking.InkManager.recognizeAsync
+
+display message in upper right corner
+a: use Windows.UI.Notifications and 
+   notifications.ToastTemplateType = toastText01;
+
+save user credentials so they roam with the user and the app
+a: use Windows.Security.Credentials and PasswordVault()
+
+stream Play To movie from URL instead of your app
+a: use the x-ms-playToPreferredSourceUri attribute
+
+how debug when you suspend your app
+a: set the Debug Location to Suspend or 
+   start debugging then suspend and wait 10 seconds
+
+exception canot use search pane because app has hidden itself
+a: remove SearchBox control or
+   remove code that calls SearchPane class
+

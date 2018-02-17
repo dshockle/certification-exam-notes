@@ -1,0 +1,518 @@
+== start manage program flow
+
+ensure no db mods occur if either fail
+a: use the Complete method of the TransactionScope class
+
+update db with all modifications and resolve any update conflicts
+a: DataContext class SubmitChanges method ContinueOnConflict option
+
+check for folder throw COM exception if needed
+a:  if Directory.Exists(path)   return true
+    else throw new COMFilePathException(path)
+
+db query handle input errors and malfunctions
+a: catch SqlException check value of Class property
+   value less than 17 prompt new input more than 16 say try again later
+
+how adjust performance counter when a hit occurs
+a: counter.ReadOnly = false; counter.Increment();
+
+specify method for delegate at runtime
+a: if (criteria)
+      delegate = Class.Method1
+   else
+      delegate = Class.Method2
+   delegate.Invoke(param1, param2)
+
+collection for sequential processing, add strings to collection
+a: Queue collection with Enqueue(string) method
+
+error handling to catch db errors and log provider name
+a: use DbException class
+
+exception if product not found or deleted
+a: create custom exception that inherits from : Exception
+
+toggle tracing on/off without recompiling
+a: in app config file define a BooleanSwitch
+
+linq summarize facility capacity by region
+a: group facility by facility.RegionID into Region
+
+how track query statistics
+a: class SqlConnection property StatisticsEnabled = true
+
+select top 10 customers who have placed orders
+a: SELECT TOP(10) REF(c) FROM Customers AS c WHERE EXISTS (c.Orders)
+
+default capacity of Stack
+a: 10
+
+delegate that refers to method that returns bool takes Employee and double
+a: public delegate bool SalaryDel (Employee emp, double amount)
+
+iterate dictionary < int, Employee>
+a: foreach(KeyValuePair<int, Employee> kvp in data)
+
+items in collection want all properties available without more trips to db
+a: set the DeferredLoadingEnabled property of the DataContext to false
+   use LoadWith to ensure properties are loaded with each object
+
+define a Windows Service Class
+a: public class Myservice : System.ServiceProcess.ServiceBase
+
+how indicate incorrect method arguments
+a: throw new ArgumentException
+
+generate and handle exception if id value is zero
+a: try{if (id == 0) throw new CustomException(id);}
+   catch(CustomException){MessageBox.Show("Invalid ID");}
+
+add nodes to linked list
+a: AddFirst, AddLast, AddAfter, AddBefore
+
+dictionary for unknown or growing number of entries
+a: HybridDictionary
+
+ensure processing does not begin until all data retrieved
+a: EventWaitHandle object WaitOne() method
+
+invoke GetFileContents asynchronously
+a: use while(!result.isCompleted) to read in contents
+a: delAsync.BeginInvoke(null,null);
+   while(!result.isCompleted)//process;
+   string contents = delAsync.EndInvoke(result);
+
+add thread to thread pool
+a: WaitCallback cb1 = new WaitCallBack(method1)
+   ThreadPool.QueueUserWorkItem(cb1)
+
+retrieve customer object from dictionary
+a: if (dict.Contains(key)) cust = (Customer) dict[key];
+
+create and start threads using new thread managment features
+a: ThreadPool.QueueUserWorkItem(Task1);
+
+have application spawn new threads 
+a: ThreadStart delegate; Thread thread; Start() method;
+
+create task that constantly runs but doesn't need startup argument
+a:  ThreadStart delegate; Thread thread; Start() method;
+
+create task that constantly runs and needs startup argument
+a:  ParameterizedThreadStart delegate; Thread thread; Start() method;
+
+begin thread execution
+call Start method of the thread object
+
+efficiently store large number of objects with unique id property
+Hashtable
+
+best way to get data from Oracle db
+a: OracleDataReader
+
+custom collection ensure can iterate via foreach
+a: implement IEnumerable and IEnumerator interfaces
+
+how iterate collection that implements IEnumerator and IEnumerable
+a: use a foreach statement
+
+spawn multiple threads and avoid race conditions
+a: use the Interlocked class
+
+best unique identifier for Rethrow type exception
+a: Id
+
+click handler send code block to delegate param anonymously
+a: button1.Click += delegate(System.Object o, System.EventArgs e)
+   { MessageBox.Show("Clicked!");}
+
+can you use Exception.ToString to check for equality?
+a: No
+
+what if Enumerator.GetNext() called on object in invalid state
+a: InvalidOperationException thrown
+
+use TcpClient to read files from network
+a: use NetworkStream class Read method
+
+use Task to process list of files as a collection
+a: use await Task.WhenAll(tasks);
+
+press F5 in the code window
+a: program will compile and execute
+
+using PLINQ specify the execution mode for a process
+a: WithExecutionMode(option)
+
+using PLINQ force parallel execution mode
+a: WithExecutionMode.(ParallelExecutionMode.ForceParallelism)
+
+efficient async threads in app with a user interface
+a: public static void Unblock
+
+enable multithreading when accessing tasks in the user interface
+a: public static void Unblock
+
+most efficient way to handle async task cancellation
+a: use Unified Cancellation Framework
+
+create a long running task cancellation
+a: listen for multiple cancellation requests
+
+== end manage program flow
+
+== start create and use types
+
+ensure devs manually release resources when needed
+a: IDisposable interface; Dispose() method
+
+read all data from a text file
+a: FileStream; StreamReader; ReadToEnd()
+
+create class that will be used to compare objects
+a: IComparer interface and Compare(obj, obj) method
+
+make custom formatter class
+a: IFormatter interface
+
+parse string by carriage returns with least effort
+a: while(reader.Peek() > -1); ReadLine();
+
+create class to use platform invoke to call unmanaged method
+a: [DllImport("unmanaged.dll", EntryPoint=methodToInvoke)]
+  public extern static bool ManagedMethod();
+
+custom permissions that support imperative security with least effort
+a: inherit from CodeAccessPermission class
+
+ensure correct version info in assembly metadata
+a: add two attributes AssemblyVersion and AssemblyFileVersion
+
+create a custom marshaler
+a: implement ICustomMarshaler interface
+
+use custom marshalling in method for .net and com clients
+a: use MarshalType = "MyClass"
+a: [MarshalAs(UnmanagedType.CustomMarshaler, MarshalType = "MyClass")]
+
+use custom permission class with imperative security
+a: use the Demand() method of the custom permission object
+
+let users share data reader returned by ExecuteSqlQuery
+a: ExecuteReader(CommandBehavior.CloseConnection);
+
+store text efficiently
+a: use StringBuilder and the Append method
+
+db connection pool min 1 connection max 5 connections
+a: put min and max in using statement then use Open() method
+a: using(SqlConnection con=new SqlConnection(Pooling=true;Min=1;Max=5))
+   {con.Open();//do work}
+
+use unmanaged dll through platform invocation
+a: [DllImport("unmanaged dll", EntryPoint="unmanaged method")]
+   public extern static bool ManagedMethod(data);
+
+which interface should class implement to let itself be sorted
+a: IComparable
+
+calculate value of field when object is loaded into memory
+a: use the [OnDeserialized] attribute and OnDeserialization method
+
+instantiate <int, employee> collection and add objects to it
+a: ec = new EmployeeCollection(); ec.Add(emp1.ID, emp1);
+
+release object resources
+a: Dispose
+
+use Multiple Entity Sets per Type in an Entity Data Model
+a: in storage model add EntitySet elements, add EntityType elements
+   in concept model add EntityType element, add EntitySet elements
+   in mapping adding an EntitySetMapping element for each table
+
+load an object from a binary file
+a: (CollectionType) binaryformatter.Deserialize(filestream);
+
+Main method for service that should run on startup
+a: EnumerateService service = new EnumerateService(); Run(service);
+
+retrieve strongly typed data from data reader
+a: use tablename.GetValue(column number) and cast to the data type
+a: collection.Add((MyType) tablename.GetValue(colnum))
+
+make methods and properties available to COM and control versioning
+a: use attributes [Guid][ProgId][ClassInterface]
+
+auto start service run under local system account
+a: use ServiceInstaller and ServiceProcessInstaller in constructor
+
+make service start when machine restarts
+a: StartType = ServicesStartMode.Automatic
+
+run service under local system account
+a: Account = ServiceAccount.LocalSystem
+
+register assembly for COM components to consume
+a: regasm.exe
+
+manage contents of global assembly cache and download cache
+a: gacutil.exe
+
+enable COM components to be consumed by managed code
+a: tlbimp.exe
+
+digitally sign files and manage keys stored in registry
+a: signtool.exe
+
+launch app so it uses file contents to get environment settings
+a: StartInfo.Arguments = "file"
+
+expose Class with unchanging interface to a COM component
+a: ClassInterfaceType.AutoDual; public default constructor;
+
+auto generate COM interface for both early and late binding
+a: ClassInterfaceType.AutoDual
+
+COM interface for late binding only
+a: ClassInterfaceType.AutoDispatch
+
+to expose class to COM interope what visibility is needed
+a: all members public and public default constructor
+
+which class to convert byte array to UTF-8 string
+a: UTF8Encoding
+
+create Timer object to invoke a method every 5 minutes
+a: new TimerCallback(MethodtoCall), null,0,300000);
+
+== end create and use types
+== start Debug applications and implement security
+
+log all resource access and ignore logging errors
+a: serviceAuthorizationAuditLevel=SuccessAndFailure
+
+capture debug messages to console
+a: ConsoleTraceListener
+
+counters to monitor usage of connection pools
+a: NumberOfActiveConnectionPools and NumberofActiveConnectionPoolGroups
+
+poll to see if other processes are launched
+a: SELECT * FROM __InstanceCreationEvent....+=EventArrived
+
+verify assembly belongs to publisher according to digital certificate
+a: PublisherMembershipCondition class Check method
+
+protect xml file so only app and administrators can read it
+a: Encrypt contents of XML using AesManaged class
+
+hash data to ensure not tampered with between app and third party
+a: MD5CryptoServiceProvider class, ComputeHash method
+
+AppDomain class Load method can be used with what kind of files
+a: all assembly files regardless of extension
+
+register managed assembly for COM clients
+a: regasm /tlb myassembly.dll
+
+register assembly in the registry
+a: gacutil /i myassembly.dll
+
+ensure CLR uses DEVPATH to locate shared assembly
+a: set the DEVPATH environment variable to the default build location
+   add developerInstallation=true to Machine.Config file
+
+provide complex installation logic
+a: create a custom installer class that inherits from : Installer
+   add [RunInstaller(true)] attribute to the class
+
+how override file IO permission assertion in method
+a: start with RevertAssert(); end with Assert();
+
+TraceSwitch trace levels
+a: 0 off, 1 error, 2 warning, 3 info, 4 verbose
+
+make clients use new version of assembly without changing clients
+a: <assemblyIdentity name = "assembly" .../>
+   <bindingRedirect oldVersion="1.0" newVersion="1.1"/>
+
+pause and display message if bad values passed in to function
+a: use an Assert
+
+create an assert that only operates in debug mode
+a: Debug.Assert()
+
+store passwords in database best security least effort
+a: SHA1CryptoServiceProvider to encrypt and Encoding class to retrieve
+
+create a custom event log
+a: EventLog.DeleteEventSource("source")
+   EventLog.CreateEventSource("source", "CustomLog")
+
+write an event to custom application event log
+a: log.Source="source"; log.Log="CustomLog";
+   log.WriteEntry(text);
+
+regular expression to verify phone number formats
+a: ^((\d{3}[-\s]|....
+
+xpath to get Vehicle nodes with Year attribute set to 2010
+a: //Vehicle[@Year='2010']
+
+create custom event log on server1
+a: MachineName = "server1";
+a: cd = new EventSourceCreationData("source", "customlog");
+   cd.MachineName = "server1"; 
+   EventLog.CreateEventSource(cd);
+
+create child app domain with different assembly path
+a: domainSetup.ApplicationBase = @"file path";
+
+decrypt text using TripleDESCryptoServiceProvider class
+a: secretKey.CreateDecryptor()
+
+three classes to create secure data stream to remote server
+a: X509Certificate; SslStream; TcpClient
+
+configuration file add element to run app with old 1.1 CLR
+a: <supportedRuntime version="v1.1.4322"/>
+
+database remove child table rows when parent removed least effort
+a: in ON DELETE clause specify CASCADE
+
+restrict method invocation to only managers using declarative security
+a: add attribute to method 
+   [PrincipalPermission(SecurityAction.Demand, Role = "Managers")]
+
+restrict method invocation to only managers using imperative security
+a: add code to method
+   if (Thread.CurrentPrincipal.IsInRole("Managers"))
+
+regex for email address including new top level domains
+a: end pattern with {2,6} and then use if(Regex.IsMatch(Email, Pattern))
+
+users without access to file system should not access your classes
+a: declarative security
+   [FileIOPermission(SecurityAction.Demand)]
+a: imperative security
+   p = new FileIOPermission(PermissionState.Unrestricted); p.Demand();
+
+guarantee data integrity and a unique digital signature
+a: DSACryptoServiceProvider class SignData() method
+
+write trace messages to event log
+a: TraceEvent method TraceEventType.Error argument
+
+verify assembly originates from company intranet
+a: SiteMembershipCondition class GetCallingAssembly method
+
+instantiate UserInfoCollections to store Name and Address objects
+a: UserInfoCollection<Name> and UserInfoCollection<Address>
+
+which tool to modify assembly's granted permissions
+a: caspol.exe
+
+ensure db row cannot be deleted if it has children
+a: create foreign key constraint with option ON DELETE NO ACTION
+
+encrypt high volume data with least overhead
+a: DESCryptoServiceProvider; CryptoStreamMode.Write
+
+retrieve contents of app1 event log entries and display in console
+a: log.Source="app1"; log.Log="customLog"; foreach(EventLogEntry);
+
+create domain and load assemblies into it
+a: CreateDomain("domain"); Load(assembly);
+
+ensure methods in class not invoked from unauthorized URLs
+a: SecurityAction.LinkDemand
+
+emit dynamic assembly and save to hard drive
+a: AssemblyBuilderAccess.Save; builder.Save(dynamic assembly);
+
+add to app config file to reference strong named assembly at URL
+a: <assemblyIdentity name="assembly" .../>
+   <codeBase href="url"/>
+
+== end Debug applications and implement security
+== start Implement data access
+
+how add file attachment to email message
+a: message.Attachments.Add(new Attachment("file", "text/html"));
+
+email message plain text versus markup formatting
+a: message.isBodyHtml true or false as needed
+
+serialize how avoid serializing particular field
+a: apply NonSerialized attribute to the field
+
+quickly load a class from a large binary file
+a: BinaryFormatter class UnsafeDeserialize method
+
+perform serialization
+a: New,OnSerializing,OnSerialized,OnDeserializing,OnDeserialized
+
+generate xml
+a: XElement(root); XElement(name, value); XAttribute(name, value)
+
+send email message
+a: Message(from,to,subject,content); Attachment; SmtpClient
+
+calculate field when class deserialized
+a: OnDeserialization() method
+
+linq test if db column is null
+a: Equals(null)
+
+remove contents of queue collection
+a: Clear
+
+linq query to create collection of vehicles and parts
+a: var vehicleparts = from vehicle in vehicles
+   join part in parts on vehicle equals part.vehicle
+   select new vehiclename = vehicle.model, part.id;
+
+copy file to new server copying perms not inheriting from dest folder
+a: SetAccessRuleProtection(true, true)
+
+send email messages
+a: MailMessage(from,to,subject,content);SmtpClient;Send
+
+get contents of binary data column with FileStream attribute
+a: use SqlFileStream class
+
+serialize object with binary serialization
+a: Object; Stream; BinaryFormatter; Serialize
+
+default execution type of linq queries
+a: deferred - query not executed until results are accessed
+
+avoid "disposed" error when using linq
+a: move call to Dispose() method after access of query results
+
+write user specific settings to file in isolated storage
+a: IsolatedStorageFile.GetUserStoreForDomain()
+
+create file containing array of bytes
+a: fs.Write(arr,0,length);
+
+iterate through subdirectories print info
+a: searchOption.AllDirectories; DirectoryInfo(subpath)
+
+linq with Entity Data Model
+a: using(EDM edm = new EDM())
+
+display size and whether hosts file is readonly
+a: FileInfo(@"file"); .IsReadOnly; .Length
+
+uncompress file
+a: DeflateStream(fs,CompressionMode.Decompress, true)
+
+add data to collection with type safety
+a: use generics eg new SortedList<string, Vehicle>()
+
+serialize hashtable of strings in binary file
+a: BinaryFormatter class, Serialize method
+
+== end Implement data access

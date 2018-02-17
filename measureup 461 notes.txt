@@ -1,0 +1,629 @@
+get records and substitute 0.00 for missing prices
+ISNULL (Price, 0.00)
+
+see if transaction is uncommittable
+XACT_STATE
+
+speed up view that uses multiple tables
+Add an index to the view
+
+return only unique values
+DISTINCT
+
+select from multi tables including duplicate records
+UNION ALL
+
+select only records in both tables
+INTERSECT
+
+return data as xml with generic <row> tags
+FOR XML RAW
+
+return one of two values based off a boolean 
+IFF
+IFF(<condition, resTrue, resFalse>)
+
+adding records which fields required
+those defined with NOT NULL
+not those defined with NULL, IDENTITY, DEFAULT
+
+auto gen unique id
+IDENTITY()
+
+mod view so only unique records returned
+add DISTINCT clause to SELECT statement
+
+fix slow query nonclustered index on one column
+alter nonclustered index to include more columns
+
+permit use of sp on table user cannot select from
+add EXECUTE AS <owner name> to the sp
+
+best data type for last name field
+varchar eg varchar(20)
+for non-English characters nvarchar
+
+permit use of sp on table user can select from
+grant user EXECUTE perms on the sp
+
+select match with lowest value in one column
+SELECT column
+FIRST_VALUE()OVER(partition by col) As name
+FROM table
+ORDER BY column
+
+return xml each tag named after selected column
+FOR XML AUTO
+
+triggers for DML
+INSTEAD OF, AFTER //there is no before trigger
+
+triggers for DDL
+ALTER_TABLE, CREATE_TABLE
+
+severity level of a THROW statement
+16
+
+make function return an integer
+after your CREATE FUNCTION line use RETURNS integer
+
+make column uniquely identify each record
+PRIMARY KEY
+
+make column automatically increment in value
+INDENTITY(1,1)
+
+make column hold up to 20 characters
+<column name> varchar(20) NULL
+
+view cannot modify table
+TOP with CHECK OPTION
+COUNT or other calculated value
+
+view can modify table
+not using TOP with CHECK OPTION
+not using COUNT or other calculated value
+
+view let users modify only certain rows
+WITH CHECK OPTION
+
+sp query fast for most values but slow for others
+WITH RECOMPILE //prevents execution plan caching
+
+insert records from one table into another
+MERGE INTO
+
+add fields to table
+ALTER TABLE <table>
+ADD <col>,<col>
+GO
+
+view including modified records
+WITH CHECK OPTION
+
+turn off constraint checking when inserting data into a table
+WITH NO CHECK
+
+ensure underlying table structure cannot be modified
+WITH SCHEMABINDING
+
+hide view definition code
+WITH ENCRYPTION
+
+delete table save nothing
+DROP TABLE <owner.name>
+
+join method when fields not in same sorted order
+Hash Join
+
+join method when fields are in same sorted order
+Merge Join
+
+join method when tables have different number of rows
+Nested Loop //slow on large tables
+
+create a view
+CREATE VIEW name AS <statement>
+
+view unique rows and all columns table one match key in table2
+WHERE EXISTS
+
+records where Title contains word Sales
+WHERE Title Like '%Sales%'
+
+records where Title is word Sales
+WHERE Title = 'Sales'
+
+records where Title starts with Sales
+WHERE Title Like 'Sales%'
+
+add parameter to sp that will return int
+@ParamName int OUTPUT
+
+col hold values 1 to 100 cycle beyond that
+CREATE SEQUENCE name AS tinyint
+START WITH 1 MINVALUE 1 MAXVALUE 100 CYCLE
+
+create num for col if none in Insert
+ADD CONSTRAINT name DEFAULT
+
+apply default constraint to existing rows
+use WITH VALUES option on the DEFAULT line
+
+constraint to make col uniquely id row
+Primary Key
+
+convert text to date return NULL if cant
+TRY_PARSE()
+
+display text in place of column value
+CHOOSE(column, text1, ...) // sorta like an enum
+
+column should be fixed length 2 characters
+char(2)
+
+column should uniquely identify each record
+NOT NULL PRIMARY KEY
+
+long transaction keep data consistent minimize blocking
+SNAPSHOT isolation level
+
+search for nulls in two or more fields
+COALESCE
+
+return diff values if col1 null, col2 null or both null
+COALESE
+
+view syntax of slow query
+sys.dm_exec_dql_text(queryid)
+
+on error return to specific location in sp
+Save Transaction
+
+three DML triggers
+INSERT, DELETE and UPDATE
+
+what is bit data type
+1 or 0 // aggregate funcs ignore nulls on bit fields
+
+for a view to use ORDER BY
+it must also use TOP 
+
+select values from two tables but not duplicates
+UNION
+
+make a sp create a new execution plan
+sp_recompile
+
+change coloumn name
+sp_rename
+
+domain integrity
+validate entries for specific columns
+
+entity integrity
+define a row as a unique entity
+
+referential integrity
+define relationships between tables
+
+user-defined integrity
+define business rules
+
+make view able to update more than one table
+use an INSTEAD OF trigger on the view
+
+save execution plan to xml
+SET STATISTICS XML ON
+
+increment values across tables
+a Sequence object
+
+row-based approach
+Cursor
+
+hold records in memory and manipulate one row at a time
+Cursor
+
+aggregate func display average of price field
+(SELECT AVG(Price) FROM Production.Products)
+
+delete view save nothing
+DROP VIEW dbo.viewname
+
+store time and timezone
+Datetimeoffset data type
+
+move new empty table from source schema to dest
+ALTER SCHEMA dest TRANSFER source.tablename
+
+need to turn off auto number for a field
+insert one record and turn back on auto number
+SET IDENTITY_INSERT table ON
+INSERT table (col1,...) VALUES(42,...)
+SET IDENTITY_INSERT table OFF
+
+severity level that passes control to catch block
+16
+
+need to report resources involved in deadlocks
+use SQL Server Profiler, select Deadlock graph event
+
+when price is modified log change in another table
+CREATE TRIGGER name ON table FOR UPDATE AS INSERT table (col1,...)
+
+jump to location when error occurs
+CATCH
+
+remove stored procedure
+DROP PROC table.proc or DROP PROCEDURE table.proc
+
+update foreign when parent deleted
+ON DELETE SET DEFAULT
+
+prevent deletion of parent record
+ON DELETE NO ACTION
+
+delete child record along with parent
+ON DELETE CASCADE
+
+set child to null when parent deleted
+ON DELETE SET NULL // only if child allows nulls
+
+force sql to access tables in order they are listed
+SET FORCEPLAN ON
+
+invoke table valued func for each row returned by
+an outer table expression of a query
+APPLY
+
+limitation of xml data type
+cannot be converted to text or ntext data types
+
+@@TRANCOUNT function returns what
+number of BEGIN TRAN statements on current connection
+
+return unique list of records
+SELECT DISTINCT
+
+return records that match multiple criteria
+use AND in the WHERE clause
+
+three ways to add employee John Smith
+INSERT emptable (fn, ln) VALUES ('John' 'Smith)
+INSERT emptable VALUES  ('John' 'Smith)
+INSERT INTO emptable VALUES ('John' 'Smith)
+
+DELETE FROM tablename
+remove all records from table 
+while keeping structure and writing
+deleted records to the transaction log
+
+TRUNCATE TABLE tablename
+remove records keep structure but 
+not write to transaction log
+
+DROP TABLE tablename
+remove entire table
+
+verify that data in a field was modified
+UPDATE(col1) // returns boolean
+
+create a view
+CREATE VIEW schema.viewname AS ...
+
+store currency with 6 decimal places
+use decimal data type
+
+how many decimal places does money type allow
+four
+
+AFTER INSERT trigger to confirm order is <= amt in stock
+which two tables should you use
+the Inserted table and whatever is your inventory table
+
+function to get difference between times
+DATEDIFF() function
+
+enable indexing on computed column
+make it PERSISTED
+
+data type to hold exactly two characters
+char(2)  // two bytes
+nchar(2) // four bytes
+
+data type to hold up to two characters
+varchar(2) or nvarchar(2)
+
+identify records updated inserted or deleted
+OUTPUT $action, inserted.col1, deleted.col1
+// inserted and deleted are temporary tables
+
+add two fields to table
+ALTER TABLE table
+ADD col1 type NULL, col2 type NULL
+
+change one field all records to new value
+UPDATE table
+SET field = value
+
+create new table fast with auto-gen guid pk and a text field
+CREATE TABLE MyTable
+{ Tid UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
+  Tdescription NVARCHAR(255)}
+
+create table with auto-gen guid
+UNIQUEIDENTIFIER
+
+difference between NEWSEQUENTIALID and NEWID
+NEWID causes random activity
+
+when price modified log change to pricechanges table
+CREATE TRIGGER trigPriceChange On Products 
+FOR UPDATE AS INSERT
+
+count characters used in data field
+LEN()
+
+count records in table
+COUNT()
+
+insert control characters into strings
+CHAR()
+
+see products that match highest total items sold
+=(SELECT MAX(qty) FROM Production.Product)
+
+type of join if both have index on same field
+Merge Join
+
+return rank of row in result set without any gaps
+DENSE_RANK()
+
+new table with auto-gen guid pk
+CREATE TABLE products
+{id UNIQUEIDENTIFIER DEFAULT Newid() PRIMARY KEY NOT NULL,
+ description CHAR(2000)}
+
+change employee 25's lastname to Smith
+UPDATE Employee
+SET LastName = 'Smith'
+WHERE EmpID = 25
+
+type of cursor that wont show changed records
+Static
+
+force age field value to be 21 or higher
+Age tinyint CONSTRAINT ck_age_21
+CHECK (Age >= 21) NOT NULL
+
+string function to get part of a string
+SUBSTRING(field,start,length)
+
+combine result sets for partitioned view
+UNION ALL
+
+return all records from two select statements
+UNION ALL
+
+return 5 airlines with worst avg delay
+WITH (avgDelay, airlineID)
+SELECT TOP 5
+
+change a stored procedure
+use ALTER PROCEDURE 
+
+make sp create new execution plan each run
+WITH RECOMPILE
+
+user defined function slow on large table
+replace with correlated subquery
+
+custom error without adding it to sys.messages 
+THROW
+
+how fix error cursor <name> already exists
+use DEALLOCATE statement at end of cursor
+
+ensure no two rows have same combo of id and name
+ADD CONSTRAINT idName UNIQUE
+
+ensure data stored on disk sorted by id then name
+ADD CONSTRAINT CLUSTERED (id, name)
+
+create view that cannot change table structure
+WITH SCHEMABINDING
+
+create view hide definition
+WITH ENCRYPTION
+
+create view so results include modified rows
+WITH CHECK OPTION
+
+insert data without constraint checking
+WITH NO CHECK
+
+return name of active patients with prescriptions and visits
+SELECT name FROM patients
+WHERE (EXISTS (SELECT patientid FROM prescriptions
+ WHERE (patients.patientid = patientid))
+AND EXISTS (SELECT (patientid FROM visits
+ WHERE (patients.patientid = patientid)))
+
+want devs to see view info not table info
+WITH VIEW_METADATA
+
+cursor using data snapshot
+use STATIC when you DECLARE the cursor
+
+change table to auto-pop hours field with 40
+add a default constraint
+ADD CONSTRAINT df_hours_40
+DEFAULT 40
+FOR hours
+
+ensure all changes saved or fail as a unit
+start with BEGIN TRANSACTION and 
+IF <success> COMMIT TRANSACTION and 
+ELSE <failure> ROLLBACK TRANSACTION
+
+add id column to a view
+use ALTER VIEW and define the entire 
+view again including the new column
+ALTER VIEW vw_phonelist AS 
+SELECT id, name, phone
+FROM Humanresources.Employees
+
+create table variable
+DECLARE @VerifyTable table (Dollars money)
+
+retrieve records that were modified and 
+place them into table variable
+OUTPUT deleted.Bonus INTO @VerifyTable
+
+what does deleted table show
+what was in the table before the update
+
+count bytes used in a data field
+DATALENGTH()
+
+how disable fk constraint for fast import
+alter table and use nocheck before constraint
+ALTER TABLE table NOCHECK CONSTRAINT fk_constraint
+
+select all columns and unique rows 
+from table1 that are also in table2. 
+use WHERE EXISTS and a subquery
+SELECT col1, col2, col3
+FROM table1 t1
+WHERE EXISTS(SELECT col1
+FROM table2 t2
+WHERE t1.col1 = t2.col1)
+
+create schema and table with John as owner
+CREATE SCHEMA schema1 AUTHORIZATION John
+
+ensure clustered index for view is used in execution plan
+use the NOEXPAND view hint
+
+difference between noxpand and force_scan view hints
+NOEXPAND forces optimizer to use index
+FORCE_SCAN forces optimizer to ignore index
+
+run a stored procedure with a paramter
+EXECUTE Humanresources.Changevacationhours 5;
+
+return number of employees with more than 80 vacation hours
+SELECT COUNT(*) 
+FROM Humanresources.Employee 
+WHERE Vacationhours > 80;
+
+make field names in view easier to read
+Alias the field names in the view
+
+check table to see indexes and get recommended fixes
+Database Engine Tuning Advisor
+
+collect lock escalation for 24 hours write to log
+start a SQL Profiler session
+
+after you manually enter a value in an IDENTITY column
+next auto-gen identity will increment from your entry
+
+returns records from result set that are not in second result set
+EXCEPT
+
+change field from varchar(5) to varchar(25)
+ALTER TABLE table ALTER COLUMN column varchar(25) NULL
+
+change view to hide definition
+ALTER VIEW and WITH ENCRYPTION
+
+find all employees who sold more than 100k total sales
+SELECT EmpID, SUM(Sales) AS Total_Sales
+GROUP BY EmpID HAVING SUM(Sales) > 100000
+
+string function to get rightmost characters
+RIGHT(string, length)
+
+cursor that shows records 10 at a time
+scrollable cursor
+
+cursor that shows latest updates
+dynamic cursor
+
+remote records while keeping structure and remove data pages
+TRUNCATE TABLE
+
+rank of rows within partition of result set with no gaps
+DENSE_RANK() OVER (PARTITION BY Region ORDER BY Sold)
+
+create sp that uses a method in a class in a .NET assembly
+EXTERNAL NAME assembly.class.method
+
+undo actions of a stored procedure
+Rollback Transaction
+
+if more than one record is deleted undo the deletion
+IF (SELECT COUNT(*)) from deleted > 1
+ROLLBACK TRANSACTION
+
+use sp_SetTriggerOrder on table with two types of triggers
+it will run twice for each type of trigger
+
+two tables one view allow app update both tables with one statement
+use an INSTEAD OF UPDATE trigger
+and include FROM inserted WHERE col.ID = inserted.ID
+
+insert records from one table into another but if
+empID already exists in target table update that record
+WHEN NOT MATCHED THEN INSERT (cols) VALUES (cols) and
+WHEN MATCHED THEN UPDATE SET t1.col1 = t2.col1, ...
+
+table has three columns airline route and delay
+select airline and route and also name of 
+airline with lowest delay on the same route
+SELECT airline, route FIRST_VALUE(airline)
+OVER(partition BY route ORDER BY delay ASC)
+AS airlineWithLowestDelay
+FROM flightdepartures
+ORDER BY route
+
+characteristics of cursor data type param
+it can be an output param for a SQL proc
+it cannot be an input param for a SQL proc
+it must be used with the VARYING keyword
+for a CLR proc you cannot use a cursor param
+
+airlines table has xml column aircraftcountry
+return list of countries served by specific aircraft
+DECLARE @AircraftModel VARCHAR(3)='747'
+SELECT
+aircraftcountry.query('data(/aircraft[
+@model=sql:variable("@aircraft")]/@country)')
+FROM airlines
+
+what's wrong with this DECLARE @AircraftModel text = '747'
+text not valid data type for local variables
+
+show patients that have prescriptions
+SELECT DISTINCT patients.id FROM patients
+INNER JOIN prescriptions ON patients.id = prescriptions.id
+
+show patients that have visits
+SELECT DISTINCT patients.id
+FROM patients INNER JOIN visits ON patients.id = visits.id
+
+show patients that have prescriptions and/or visits
+use UNION operator with two SELECT DISTINCT statments
+
+shows name and address of patients that don't 
+appear in the prescriptions or visits tables
+SELECT patients.name, patients.address FROM patients
+WHERE patients.id NOT IN (...) 
+
+fifty percent of rows have pid=1 and fifty percent have
+pid distributed across 1000 different values
+optimize query regardless of pid passed in
+use WITH RECOMPILE option to force new execution plan each time
+

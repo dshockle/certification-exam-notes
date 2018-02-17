@@ -1,0 +1,527 @@
+design class
+not able to create new instances
+are able to derive from
+a: public abstract class MyClass{}
+
+want to use index notation for member List<Employee>
+a: use keyword "this"
+a: public Employee this[int id]{get set}
+
+implement read-only Age member
+a: public int Age {get; private set;}
+
+method should search until it finds a valid value
+if found return result else throw exception
+a: if (result != null) return result
+   else throw new Exception()
+
+how implement 2 interfaces in 1 class
+a: public class MyClass : interface1, interface2
+
+method to get XML from Sql stored procedure
+a: ExecuteXmlReader
+
+encrypt byte array so only original user can decrypt
+a: ProtectedData.Protect(data, null, DataProtectionScope.CurrentUser);
+
+if another developer defines OnChanging in another file you want to call it.
+if no one defines the method you want your code to compile.
+a: partial void OnChanging(double value);
+
+how debug WPF control while it is rendered in the VS designer
+a: in project with control attach debugger to seperate instance of VS
+
+ensure string named "data" represents valid number
+a: use TryParse
+
+implement data members x,y and z of a struct
+a: public double X; public double Y; public double Z;
+
+retrieve TCP requests over port 500 as string
+a: listener
+   client
+   stream
+   using (reader(stream))
+   
+construct string from list of values
+a: use StringBuilder
+
+use parallel resources on unknown hardware
+a: var q = from s in rawData.AsParallel()
+
+log messages in memory as human readable string
+a: use StringBuilder
+
+create tasks and call runjob and start for each 
+a:  
+tasks[i] = new Task((idx)=>RunJob(jobs[(int)idx], (int)idx), i);
+tasks[i].Start()
+
+how change object type
+a: use casting, var a = (Address)myMethod(data);
+
+handle exception call method and propogate up
+a: after calling your method use
+   throw new Exception(); //nothing in parens
+
+show Name property in Value field of Watch window
+a: [DebuggerDisplay("{Name}")]
+
+install assembly so multiple apps share
+a: run Gacutil to register assembly in GAC
+
+access collection items by index and sort them
+a: use List
+
+object reference that won't stop garbage collector
+a: use WeakReference
+a: private WeakReference dependentObject;
+   this.dependentObject = new WeakReference(dependency)
+
+implement property to iterate through enumeration
+a: use yield return enum.value
+
+serialize JSON into class that uses [DataContract] attribute
+a: use DataContractJsonSerializer
+
+get contents after you deserialize text into MemoryStream
+a: StreamReader(memoryStream) and ReadToEnd()
+
+add element to array
+a: convert array to list, add it, convert back
+   var list = array.ToList()
+   list.Add(value)
+   array = list.ToArray()
+
+use another constructor in same class
+a: use keyword this to call other constructor
+
+use another constructor in base class
+a: use keyword base to call other construtor
+
+to make constructor calleable from derived classes
+a: it must be protected or public, not private
+
+allow a method to execute asynchronously
+a: use await
+
+make reader.ReadToEnd asynchronous
+a: String data = await reader.ReadToEndAsync();
+
+merge resource files into a single assembly
+a: use AL.exe //Assembly Linker tool
+
+convert JSON data from web service
+a: use JavaScriptSerializer
+
+passwords stored but not in plaintext and not decryptable
+a: use SHA1Managed
+
+which attribute makes enum toString produce a CSV list of values
+a: [Flags]
+   [Flags] public enum DaysOfWeek : short
+
+generic class only supporting type Vehicle and subtypes
+a: public class Builder<T> where T : Vehicle{}
+
+increment a performance counter
+a: pc.Increment()
+
+if version 3 and 4 of assembly are both in GAC, 
+and app config file redirects app to use 3, 
+which version of the assembly is loaded?
+a: version 3
+
+result when serialize DataContract class with two DataMember members
+a: {"mem1name":mem1value, "mem2name":mem2value}
+
+how prepare assembly for GAC
+a: use Sn.exe // Strong Name tool
+
+worker method should call another to see if it should continue
+a: while(ShouldContinue()){}
+
+worker method should wait for work item in queue
+a: WorkItem item = WaitForNextItem()
+
+app config force app to use version 3
+a: use bindingRedirect
+a: <bindingRedirect oldVersion="1.0" newVersion="3.0"/>
+
+change class so DataContractSerializer can serialize as XML
+a: [DataContract] to class and [DataMember] to properties
+
+loop to process Customer objects in customers array
+a: foreach(Customer c in customers)
+
+serialize into XML a Document with Properties
+a: 
+[XmlRoot("Doc")]
+public class Document
+  [XMLIgnore]
+  public int PropertyToNotSerialize{get;set;}
+  [XMLElement]
+  public List<DocumentProperty> PropertiesToSerialize{get; set;}
+
+asynchronously write byte array named data
+a: use await and WriteAsync
+
+handle exceptions for task cancellations during execution
+a: use Flatten().InnerExceptions with typeof(TaskCancledException)
+
+why might debugger continue past breakpoint method
+a: method has DebuggerStepThrough attribute applied
+
+read file asynchronously display in WPF app
+a: use reader.ReadToEndAsync()
+
+display file contents asynchronously
+a: use await and ReadToEndAsync
+
+declare delegate that uses anonymous method to concatenate two strings
+a: delegate declaration must reference correct type and number of parameters
+   delegate(string s1, string s2) {return s1+s2;};
+
+raise processing event with reference to current class and CancelEventArgs delegate
+a: Processing(this, e)
+
+ensure text field contains @ and .com
+a: use Regex class IsMatch() method
+
+Linq to XML element, sub element with two attributes
+a: use nested Xelements and Xattributes
+a: XElement xml = 
+   new XElement("Parent",
+   new XElement("Sub",
+   new XAttribute("First", first),
+   new XAttribute("Second", second)));
+
+throw exception when int value overflows
+a: use a Checked statement around the calculations
+
+unsafe method initialize array of ints
+a: use unsafe and fixed keywords
+
+ensure Dispose() called regardless of exception
+a: use using keyword or 
+   finally if (target != null) Dispose()
+
+how many database connection pools created?
+a: as many as (server + catalog) combos
+
+fix error "source not found or event logs could not be searched"
+a: run code with Administrator privileges
+
+programmatically get value of switch in config file
+a: inherit from Switch class get Value property
+
+create cert named Test using self-signed root named CA
+a: use Makecert with CN=Test
+   Makecert.exe -n "CN=Test" -ic CA.cer Test.cer
+
+configure app to use .net framework 4.0
+a: <supportedRuntimeVersion="v4.0"/>
+
+use which key to decrypt data from company B
+a: the public key from company B
+
+interface declaration providing read/write property
+to store instance of ObjectContext class
+a: use PropertyType PropertyName{get; and set;}
+
+create MappingException that can wrap other exceptions
+a: public class MappingException : Exception {...}
+
+call method even if there is an exception
+a: use the finally block
+
+force assembly to use .net runtime 4.0
+a: <supportedRuntime version="v4.0" />
+
+write "Invalid" to custom event log "AppCenter"
+a: eventlog = new eventlog("AppCenter")
+   eventlog.WriteEntry("Invalid")
+
+decrypt data with Rijndael
+a: use CreateDecryptor() passing in key
+
+ensure breakpoint is hit only when thread's name is Thread1
+a: Breakpoint Filter or Breakpoint Condition
+
+linq query provide substitue text when Name null
+a: in Linq use ?? to provide default value
+   Name = L.Name ?? "Our Neighbors",....
+
+make class properties unchangeable after initialization
+a: use public type Name {get; internal set;} for the properties
+
+linq to xml find all movies with null ReleaseDate
+a: use movie.Attribute("ReleaseDate").Value == ""
+
+foreach loop using parallel resources
+a: Task.Run() and ContinueWith()
+
+break on the fifth time a method is called
+a: set Hit Count property to 5
+
+use TransactionScope so changes roll back if one method throws exception
+but changes do NOT roll back if another method throws exception
+a: use two nested TransactionScope blocks
+   on the inner one use TransactionScopeOption.Suppress
+
+serialize class to xml but some members are private
+a: use DataContractSerializer
+
+when are Trace and Debug messages written
+a: in Release config only Trace messages are written, 
+   in Debug config both are written
+
+determine if an object is an instance of a specific type
+a: use the keyword "is"
+
+return true if parameter is a dog or a cat
+a: return obj is Dog || obj is Cat
+
+in debug config only get message if chart is null
+a:  Debug.Assert(chart != null);
+
+class for shared key (symmetric) encryption
+a: RijndaelManaged class
+
+use multiple sql connections with same string
+a: pooled connection is returned with multiple connections open
+
+use unmanaged memory buffer
+a: buffer = Marshal.AllocHGlobal(buffersize);
+
+release unmanaged memory buffer
+a: if (buffer == IntPtr.Zero) Marshal.FreeHGlobal(buffer);
+
+inform garbage collector of unmanaged memory usage
+a: GC.AddMemoryPressure(size) and when done
+   GC.RemoveMemoryPressure(size)
+
+declare event MouseMove raisable by your class only
+a: use the keyword "event"
+   public event EventHandler<MouseEventArgs>MouseMove;
+
+how make user-friendly text
+a: use string.Format({0} ({1})...)
+
+call GetPeople and sort Persons by name and age
+a: var people = Person.GetPeople().OrderBy(
+                p=>p.Name).ThenBy(p=>p.Age);
+
+create library with one class COM visible
+a: after building assembly run tlbexp MyAssembly.dll
+   add attribute to AssemblyInfo [assembly: Guid("..."]
+   add attribute to AssemblyInfo [assembly: ComVisible(false)]
+   add attribute to class [ComVisible(true)]
+
+run a method for one exception another for others
+a: have multiple catch statements narrower first
+   catch(SqlException e){LogSqlError(e)}
+   catch(Exception e){LogError(e)}
+
+make thread-safe logger available for each thread
+a: add this field to service class
+   private static ThreadLocal<CoLogger> logger;
+   and add this in constructor of service class
+   logger = new ThreadLocal<CoLogger>(()=>new CoLogger());
+
+list that can only hold Item objects
+a: List<Item> items = new List<Item>();
+
+make class callable from method that expects IEnumerator objects
+a: make class implement IEnumerable and include GetEnumerator()
+
+linq query to return as 'Publisher' the Name property 
+of Publisher class which is a member of the Book class
+a: var query = from b in Book.GetBooks()
+   select new {Publisher=b.Publisher.Name};
+
+how can you force a linq query to execute
+a: call ToList method of query variable
+
+how serialize using list of objects of varying types
+a: use the keyword "dynamic"
+   public void Serialize(dynamic o){Serialize(o);}
+
+prevent other apps from instantiating class but 
+still allow inheritance from it
+a: make class public
+a: make constructor protected internal
+
+class and constructor access modifiers
+a: public useable by other assemblies
+   protected useable by descendants only
+   internal useable in same assembly only
+
+only call one method when another succeeds
+a: use TaskContinuationOptions.RanToCompleted
+
+create and initialize a <int,string> dictionary
+a: var dictionary = new Dictionary<int, string>()
+   {{1, "Sales"},{2,"Marketing"}};
+
+perform operation for each employee in parallel
+a: use Parallel.Foreach
+   Parallel.ForEach(employees,(e,state,i)=>operation(e));
+
+allow multiple threads to modify collection
+a: use BlockingCollection
+   private static BlockingCollection<byte[]> queue;
+   queue = new BlockingCollection<byte[]>();
+
+create an event handler for this delegate: 
+public delegate void UnhandledExceptionEventHandler
+(object sender, UnhandledExceptionEventArgs e);
+a: your method signature must match the delegate signature
+   in this case that would be: 
+   private void HandleAppError(object sender, 
+   UnhandledExceptionEventArgs e){}
+
+how fix Request for principal permission failed
+a: use PrincipalPolicy.WindowsPrincipal
+
+asynchronously process data streams
+a: use a ThreadPool
+a: foreach(var s in streams)
+   ThreadPool.QueueUserWorkItem(
+   state=>TransformData((Stream)state),s);
+
+redirection not working for one assembly
+a: create a strong name for the assembly
+   specify the public key token in the config file
+
+stacks and queues
+a: stacks = last in first out LIFO
+   queus = first in first out FIFO
+
+user defined exceptions should derive from what
+a: Exception class
+
+BinaryWriter wrote strings to file how retrieve
+a: use binary reader and ReadString()
+
+need two instances to represent same key in dictionary
+a: override the GetHashCode method
+
+what performs atomic operations on value types
+a: the Interlocked class
+
+how track number of instances of class
+a: use the Interlocked class
+
+pause your process if other threads are ready
+but dont pause if no other threads are ready
+a: Thread.Yield()
+
+in multithreaded app call method exactly once
+a: either use lock or use Monitor
+
+save with minimum amount of disk space
+a: use BinaryWriter and the Write() method
+
+what exception should you throw when an action is performed
+on an object in an invalid state
+a: InvalidOperationException
+
+you must call a method that might throw a COMexception
+if it does you must throw a MappingException with the
+details of the COMexception
+a: catch(COMexception ex)
+   {throw new MappingException("Error", ex);}
+
+how set default value for non-serialized field
+when deserializing
+a: add a method to set the value and 
+   apply the [OnDeserializing] attribute to the method
+
+write each integer from a List<int> to a separate line in a text file
+a: use ForEach and WriteLine
+   integers.ForEach(i=>writer.WriteLine(i));
+
+use lambda to subscribe to and handle Processed event
+a: subscribe to events with operator "+="
+   Processed += (sender,e)=>ShowCompleted();
+
+ensure clients wait until less than 3 pending operations
+a: use the Semaphore class
+
+linq return list of product names
+a: var query = 
+   from p in ProductList.GetProducts() 
+   select p.Name;
+
+StreamWriter writer.Write doesn't send data
+a: add writer.Flush()
+
+collection that does not allow duplicate identifiers
+a: Dictionary
+
+need a query to get the number of results for each distinct date
+a: in your query use group by
+
+collection stores items in order and shrinks when item removed
+a: linked list
+
+implement the IComparable pattern
+a: implement CompareTo() method
+   override GetHashCode() method
+   override Equals() method
+
+use reflection to dynamically load an assembly
+a: use Assembly.LoadFrom(path)
+
+lambda to sort products list by id property
+a: (x,y)=> some long expression
+a: (x,y)=>x.ID<y.ID?-1:x.ID>y.ID?1:0
+   note expression to the left of the => 
+   represents the input parameters of the delegate
+
+codeDOM what class generates method 
+a: CodeCompileUnit class
+
+codeDOM what method compiles and loads generated method
+a: CompileAndLoadMethod()
+
+block all threads until event is signaled
+a: use the ManualResetEvent class
+   note ManualResetEventSlim is similar but
+        cannot signal across process boundaries
+
+securely send data to another company
+a: generate hash
+   encrypt hash with your private key
+
+how declare method when you cannot verify properties 
+and methods at compile time
+a: use the keyword "dynamic"
+
+return Vehicle instances where Make property is "Honda"
+a: where v.Make=="Honda" select v;
+a: var query = from v in Vehicle.GetVehicles()
+               where v.Make == "Honda" select v;
+
+SqlCommand instance add params get value
+a: use ParameterDirection.Output;
+
+unsubscribe from event handler
+a: use operator "-="
+
+unsubscribe DocsProcessed handler from Processed event
+a: Processed -= DocsProcessed;
+
+trying to use DataContractJsonSerializer with class you dont control
+initially the properties of the class do not serialize
+a: implement IDataContractSurrogate
+
+use BinaryFormatter to serialize class but ensure one field not serialized
+a: apply Serializable attribute to class and
+   apply NonSerialized attribute to the field
+
+execute sql query and store number of rows affected
+a: use ExecuteNonQuery() method of SqlCommand class
+
+

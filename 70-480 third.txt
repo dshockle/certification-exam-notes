@@ -1,0 +1,233 @@
+﻿72 call web worker and display message received from it
+var worker = new Worker("Worker.js");
+worker.onmessage = function(e) { window.alert(e.data); };
+worker.postMessage("");
+
+73 web worker notify caller with message when verification complete
+self.onmessage = function(e) {
+  var result = VerifyAddress(e.data);
+  self.postMessage(result); }
+
+74 use web worker to run background task need to stop task from web page
+updater.terminate();
+
+75 retrieve area code from message sent back to page by web worker
+onmessage = function(e) { var areaCode = e.data.areaCode; }
+
+76 retrieve key words from message sent back to page by web worker
+onmessage = function(e) { var keywords = e.data.keywords; }
+
+77 input field required email
+<input type = "email" name = "email" required>
+
+78 input field month data type info must not be remembered by browser
+<input type = "month" name = "expiry" autocomplete = "off">
+
+79 input field color should be remembered between sessions
+<input type = "color" name = "favColor" autocomplete = "on">
+
+88 what does returnValue property do
+if true default behavior occurs if false then not
+
+89 validate data to ensure that it is JSON encoded
+try { JSON.parse(document.getElementById("data").value);
+}catch{window.alert("Invalid JSON data"); }
+
+90 prevent code injection
+use replace("<","&lt;").replace(">","&gt;");
+
+91 ensure at least one checkbox is checked when form submitted
+$(document).ready(function() {
+  $("#submitButton).click(function(){
+    var atLeastOneChecked = false;
+    $("inputcheckbox").each(function (index, value){
+      if (value.checked)
+        atLeastOneChecked = true;
+    });
+    if (!atLeastOneChecked) { alert("Please select a topping.");}
+  });
+});
+
+92 validate with regex ^[a-zA-Z0-9_-]{8,16}$
+var regex = /^[a-zA-Z0-9_-]{8,16}$/;
+regex.test(userName);
+
+93 two ways to convert JSON string to JS object
+JSON.parse
+JQuery.parseJSON
+
+94 asynchronously load a plain text file using XMLHttpRequest
+Assign a new instance of XMLHttpRequest to xhr
+Register a handler for event onreadystatechange
+Invoke xhr.open("GET", url, true)
+Invoke xhr.send()
+
+95 retrieve XML from web service and get title attribute of single node
+var request = new XMLHttpRequest();
+request.open("GET", "http://service.measureup.com/Exams", false);
+request.send();
+var doc = request.responseXML;
+var attribute = doc.selectSingleNode("//Exam[@ID='70-480']/@Title");
+var title = attribute.value;
+
+96 retrieve JSON data from web service get title attribute of single array element
+var request = new XMLHttpRequest();
+request.open("GET", "http://service.measureup.com/Exams", false);
+request.send();
+var doc = JSON.parse(request.responseText);
+var title = doc.Exams[0].Title;
+
+97 using an IXMLDOMDocument add the Price attribute of two nodes
+doc.selectNodes("//Item[@Name='Sandwich' or @Name='Soup']/@Price");
+for(var index = 0; index < prices.length; index++)
+  totalPrice += prices[index].value;
+
+98 what does true mean in request.open("GET", "GetData", true);
+web service is accessed asynchronously
+
+98 when a web service is accessed asynchronously what event must you handle
+the onreadystatechange event
+
+98 handle the onreadystatechange event
+var data = null;
+request.onreadystatechange=function() {
+  if (request.readyState==4 && request.status == 200) {
+    data = request.responseText;
+  }
+};
+
+99 convert JSON string to JS object
+var newMenu = JSON.parse(menu, function(key, value) { 
+  var newValue = value;
+  return newValue;
+});
+
+99 when converting JSON string to JS object drop two properties from the object
+switch(key){
+  case "Calories":
+  case "Type":
+  newValue = undefined;
+  break;
+}
+
+100 convert JSON string to JS object and remove two properties
+var newData = JSON.parse (data, function(key, value) {
+  var newValue = value;
+  switch (key) {
+    case "UNLOC":
+    case "Responsibility":
+      newValue = undefined;
+      break;
+  }
+  return newValue;
+});
+
+
+//115 at work
+
+116 to make text visible on mouse over
+set style to overflow: hidden then add :hover {overflow:visible;}
+
+117 skip
+
+118 what are the positions of Padding, Border and Margin in CSS
+Margin > Border > Padding > Content
+
+119 two ways to set 80 percent transparency and color red
+background-color:#FF0000; opacity: 0.2
+background: rgba(255,0,0,.2)
+
+120 div layout width up to 250px, gray border 5px, space 10px
+div{
+width:220px;
+border:solid 5px gray;
+margin:10px;
+}
+
+121 what is the space between a border and the surrounding elements
+margin
+
+121 what is the space between a border and its content
+padding
+
+122 which CSS rule for Flex box
+display: flex;
+
+123 which CSS properties to specify the number of columns
+columns and column-count
+
+124 two changes to container to let you dynamically add items
+to container add display:flex
+to container add flex-wrap:wrap
+
+125 skip
+
+126 advertising sidebar on desktop but not mobile
+@media screen and (max-width: 480px) { .adbar { display: none } } 
+
+127 two ways to add CSS rule to div so it is rotated 90 degrees
+transform:rotateZ(90deg)
+tranfrorm:rotate(90deg)
+
+128 div change width on mouse over
+div { width:100px;height:100px;background:red;transition:width 500ms;}
+div:hover {width:300px;}
+
+129 css if landscape w 400 h 200 if portrait w 200 h 400
+@media all and (orientation:landscape) { section { width: 400px; height:200px }
+@media all and (orientation:portrait) { section { width: 200px; height:400px }
+
+130 div style resize width over three tenths of a second
+add transition: width 300ms to the div style
+
+131 css if landscape all elements w 400 h 200 if portrait w 200 h 400
+@media all and (orientation:landscape) {section {width:400px;height:200px;}}
+@media all and (orientation:portrait) {section {width:200px;height:400px;}}
+
+132 css to change color if anchor targets https URL
+a[href^="https://"]
+
+133 highlight paragraphs with matching text 'keyword' using jQuery
+$("p:contains('keyword')")
+
+134 set the third paragraph to green
+$("p:nth-of-type(3)").css(background-color","green");
+
+135 change background color of table element green on mouse enter
+$("table td input").focus(function() {$(this).parent().parent().css("background-color","green");});
+
+136 set background color of all buttons to blue
+$(":button").css("background-color", "blue");
+
+137 set background of fourth section to lightgrey
+$("section:nth-of-type(4)").css("background-color","lightgrey");
+
+138 all button controls solid one pixel red border
+$(":button").css("border","solid 1px red");
+
+139 make color of anchor link inherit from parent
+add the style attribute to the "a" element with the value of color:inherit
+
+140 order of precedence of CSS declarations
+important user agent
+important user
+important author
+normal author
+normal user
+normal user agent
+
+141 when multiple CSS rules apply to an element
+the most specific selector is used to determine the rule that applies
+
+142 CSS rule to set background color of all input elements in table cells to yellow
+table td>input {background-color:yellow}
+
+143 CSS rule each paragraph same border style as its parent
+p { border:inherit}
+
+144 when multiple CSS rules apply to an element
+the most specific selector is used to determine the rule that applies
+
+145 CSS rule each section use same background as its parent
+section {background: inherit}
+

@@ -1,0 +1,477 @@
+command line arguments delimited how
+a: by spaces
+
+is the program name the first command line argument
+a: no it is not one of the arguments
+
+stringbuilder constructed what is initial capacity
+a: no-arg sb.capacity is 16
+   sb("string") capacity is 16 plus length of string
+
+stringbuilder some characters removed what is capacity
+a: capacity unchanged by deletion but length changes of course
+
+math operators gotchas
+a: remember ^ is XOR operator, power uses Math.pow
+
+assign value to static field (member of class)
+a: field = "value"; Class.field = "value"; object.field = "value";
+
+valid definition for main method
+a: public static void main(String[] args)
+
+determine if two strings have same value (contents)
+a: string1.equals(string2)
+
+switch statements
+a: execution "falls through" case if there is no break statement
+   strings are case-sensitive
+
+members in a concrete class
+a: all methods and constructors must contain bodies
+   fields do not need to be initialized explicity (java sets defaults)
+
+switch data types
+a: byte, short, char, int, enums, String, wrapper classes
+   switch cannot use double, float, Double or Float
+
+change string case
+a: need to put result into new string
+   use string2 = string1.toLowerCase() or toUpperCase()
+
+compare strings
+a: use string1.equals(string2) or equalsIgnoreCase
+
+string manipulation
+a: strings cannot be modified once they are created
+   the string class is final too so cannot be inherited from
+
+declare and initialize int value
+a: int i1 = 1;
+
+variable initialization by default
+a: local variables are not initialized automatically
+   instance and class variables are initialized automatically
+
+which keyword creates an object (an instance)
+a: the new keyword
+
+string comparison .equals versus ==
+a: .equals compares contents and == compares references
+
+switch statement multiple case statements on one line
+a: yes it is allowed eg case 4: case 5: case 6:
+
+what import to use PI
+a: import static java.lang.Math.PI;
+
+what do primitive types hold
+a: values not references so assignment makes a copy
+
+stringbuilder replace
+a: sb.replace(begin inclusive, end exclusive, "value")
+
+import to use class in a different package
+a: import other.package.*;
+   import other.package.Class;
+
+prefix versus postfix
+a: prefix changes value before assignment and postfix after
+
+primitive value passed into function
+a: makes copy not reference so original not modified
+
+packages the compiler imports by default
+a: current package, java.lang package and package with no name
+
+how write a byte number
+a: use a 0b at the front eg 0b1101 //decimal 13
+
+how refer to class in other package without import statement
+a: use fully qualified name eg games.card.Poker
+
+what if refer to command line argument beyond the number supplied
+a: Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException
+
+what if pass reference type into function
+a: changes within function will affect value outside function
+
+what if reference nonstatic field of non-instantiated non-static class
+a: compile time error produced
+
+how reference nonstatic method of nonstatic class from outside class
+a: new Class().method();
+
+how write float variable
+a: append f eg float f = 10.01E2f;
+
+what does String compareTo method return
+a: 0 for equality; positive int or negative int
+
+two things a class cannot include
+a: package statements, import statements
+
+how use replace to delete characters from string
+a: need new string to get result and use "" as replacement text
+   eg String s2 = s1.replace("bye", "");
+
+nested if statements
+a: inner if evaluated only if outer if statement is true
+
+3d matrix how reference first element
+a: matrix[0][0][0] = 42;
+
+valid expressions for a while statement
+a: must return boolean value eg s1.equals(s2) or x==42
+
+System.arraycopy syntax
+a: System.arraycopy(source, srcPos, dest, destPos, length)
+
+in a 2d array what is indicated by 2Darray.length and 2darray[0].length
+a: the length of the first dimension, length of first sub-array
+
+in array declarations where can [] brackets be placed
+a: after the data type or after the variable name
+
+for statement syntax
+a: for(int i = 0; i < 5; i++) or for(int i : grades)
+
+converting digits to chars
+a: ascii 48 beginning digit ascii 57 last digit
+
+array declaration number of elements indicated where
+a: in second set of brackets not first
+
+if a while statement returns 0 or 1 what happens
+a: compilation error, while result must be boolean
+
+statements within a while block, do-while block
+a: while: might never execute, do: always execute at least once
+
+set array element to product of dimension indices
+a: matrix[x][y][z] = x*y*z;
+
+for loop only print even numbers
+a: iterate by two eg for(int i = 0; i < 10; i += 2)
+
+what happens with this: do{ //code; }while(false);
+a: //code executes once
+
+loop starts at zero and loops while x < 10 how many times?
+a: eleven times, 0 through 10
+
+how reference element of arraylist
+a: use list.get(0) //array notation [] cannot be used for lists
+
+what happens with for(;;)
+a: compilation fails
+
+what appens with list.get(3) when list has only 3 elements
+a: code throws runtime exception IndexOutOfBoundsException
+
+nested loops how break out of only inner loop
+a: unlabeled break statement
+
+prevent other classes directly instantiating non-private class
+a: add parameterless private constructor to class
+
+access for overloaded method in subclass
+a: must be other than private, must match signature
+
+static class integer field is initialized to what
+a: to 0
+
+the this keyword references
+a: constructors, not other methods in the same class
+
+good encapsulation for fields
+a: make fields private
+
+all objects inherit from what class
+a: the Object class
+
+do you have to handle the return value of a called function
+a: no you can ignore the return value by not assigning it
+
+default constructors
+a: are only made if no other constructors are made
+   have no parameters
+   include an invocation of the superclass
+
+when you call a subclass constructor
+a: the superclass constructor fires, then the subclass constructor
+
+what does this print if arg is null System.out.println(arg);
+a: null
+
+declare a method as a class member
+a: use static eg static void method()
+
+can a static method overload a non-static method
+a: yes public static double m (double d) overloads public int m(int n)
+
+to invoke an instance method
+a: you need to instantiate an object of the class
+
+varargs
+a: valid invocation can have zero arguments
+   vararg parameter must be last parameter
+
+boxing and method overloading
+a: boxing is automatic so m(Double d) is invoked by m(1.2);
+
+good encapsulation and reference type fields (eg arrays)
+a: getter should return a clone of the field not the field 
+
+good encapsulation of list and 'total' field
+a: total should be calculated in constructor and mutators
+
+which modifier permits access to class members only from same package
+a: no modifier (the default access level)
+
+what distinguishes overloaded methods
+a: parameter number and parameter types
+
+an overloaded constructor can use what keyword
+a: this
+
+properly encapsulated way to use instance field
+a: new Class(param, param).getField();
+
+which modifier permits access to subclasses and same package
+a: protected
+
+a default constructor can be overloaded
+a: in a subclass, not in the same class
+
+what if reference type and object type differ
+a: reference type determines which methods are available
+   object type determines which version of method is invoked
+
+what methods available with Parent p = new Child();
+a: only methods in Parent
+
+what can super invoke
+a: superclass methods, including
+   methods overridden in subclass and methods overloaded in subclass
+
+what determines which implementation of method is invoked
+a: the object type
+
+reference type casting
+a: the target type must be the object type or a valid supertype
+
+an abstract class may contain
+a: both class and instance members
+   both abstract and concrete methods
+
+abstract class modifiers
+a: abstract classes cannot be private or final
+
+the this method can invoke
+a: overridden methods in same class
+   overloaded methods in same class
+   any member available in the same class
+
+what happens if you extend from a class marked final
+a: compilation fails
+
+how access subclass-only methods if using superclass reference
+a: cast the reference to the subtype
+   eg ((Programmer) writer).learnLanguage("Java");
+
+the super keyword always references implementation found in
+a: the superclass
+
+implementing interface in class
+a: use the implements keyword
+
+subclassing a parent class
+a: use the extends keyword
+
+for super and sub classes the reference type determines what
+a: which members are accessible
+
+what if reference is interface type and object is class type
+a: only interface methods are accessible
+
+because of polymorphism
+a: the object type determines the version of the method invoked
+
+in a subclass what does super(); invoke
+a: the superclass parameterless constructor
+
+to manipulate strings what interface must you implement
+a: Appendable and CharSequence
+
+valid interface contains
+a: abstract method declaration and constants
+   in an interface all methods are public and abstract
+   in an interface all fields are public static and final
+
+to implement an interface method
+a: the signature of the implementation must be the same
+   the return type must be compatible
+   the access modifier must be public 
+
+differentiate instance variables from parameters of same name
+a: use "this." before the variable name
+
+exceptions when implementing interface methods
+a: can specify a subclass of the exception specified in the interface
+
+valid superclass for custom numeric type wrapper
+a: Number
+
+what is an exception
+a: event that affects default flow of the runtime
+
+IOException is what kind of exception
+a: checked, so it must be specified or caught
+
+FileNotFoundException is a subclass of what
+a: of IOException
+
+if a method expects an argument and you call it with a null arg
+a: an IllegalArgumentException is thrown
+
+if an index is invalid using a vector array or string
+a: an IndexOutOfBoundsException is thrown
+
+the File class throws what exception
+a: IOException
+
+when an object is required but nothing (or null) is provided
+a: NullPointerException
+
+try str.charAt(0) on the empty string ""
+a: StringIndexOutOfBoundsException
+
+code in finally block
+a: always executes
+
+exceptions are used to
+a: group and differentiate error types
+
+what handling is required for IndexOutOfBounds exceptions
+a: none since they are Runtime exceptions 
+
+what handling is required for UnsupportedOperation exceptions
+a: none since they are Runtime exceptions 
+
+to indicate that you throw an exception
+a: use the throws keyword // note the s on the end
+
+what exception indicates a bad string index
+a: StringIndexOutOfBoundsException
+
+if you throw a BadStringOperationException what must you declare
+a: throws BadStringOperationException or throws Exception
+
+what exception objects must be caught or specified
+a: all except Runtime exceptions
+
+if main method calls a method that throws an IOException
+a: main must declare throws IOException or call must be in a try block
+
+if IOException is not caught anywhere
+a: compilation fails since it is a checked exception
+
+default value for reference type is what
+a: null
+
+exception when try to access member of null object
+a: NullPointerException runtime error
+
+if calling code tries to access private constructor of different class
+a: compilation fails
+
+how access non static class member
+a: instantiate an object instance of the class
+
+implementing abstract class
+a: use extends keyword not implements
+
+when extending abstract class
+a: either implement methods or make subclass abstract too
+
+if superclass member is static and subclass has method of same name
+a: result is hiding not polymorphism
+   if superclass reference is used then superclass method is invoked
+
+when (static) members are hidden
+a: polymorphism does not apply
+
+when (instance) members are overriden
+a: polymorphism applies, object type determines invocation
+
+can an interface extend another interface
+a: yes
+
+can a class extend an interface
+a: no classes implement interfaces
+
+iterative block with branching
+a: return that doesn't specify a value terminates current method
+
+with nested blocks an unlabeled break statement
+a: terminates the inner block
+
+with nested blocks a labeled break statement
+a: can terminate any block including outer block
+
+a continue statement in for and switch blocks
+a: skips current iteration but does not terminate block
+
+can you increment variable used in while statement
+a: yes eg while(x++ < 7)
+
+if exception thrown in main before last line of code
+a: last line of code wont be executed
+
+nonstatic members and main method in same class
+a: nonstatic members cannot be referenced from static context
+   attempting to do so causes a compilation error
+
+an array is what
+a: an object, a reference type, so changes persist after function call
+
+if non-void method lacks a return statement
+a: compilation error
+
+varargs details
+a: allows an arbitrary number of values
+   declared using ... //not the word varargs
+   must be last parameter in a method
+
+what three exception classes are checked by the compiler
+a: Throwable, Exception but not RuntimeException
+
+ClassNotFoundException is what kind of exception
+a: a checked exception
+
+StackOverflowError is what kind of exception
+a: a runtime exception
+
+what is default constructor for a subclass
+a: public SubClass() {super();}
+
+can an abstract class extend another abstract class
+a: yes abstract and concrete classes can both extend abstract classes
+
+for good encapsulation
+a: fields should be private
+   getters should be public
+   getters should clone reference types not refer to them
+
+what might overload this m(10.5);
+a: a method with a Double parameter, a method with an Object parameter
+
+static members and instances
+a: static members are shared across all instances
+
+what is stringbuilder length
+a: the number of characters currently stored in the stringbuilder
+
+what is stringbuilder initial capacity
+a: 16 or string initializer length + 16

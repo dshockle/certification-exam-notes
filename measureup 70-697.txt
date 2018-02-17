@@ -1,0 +1,262 @@
+﻿1 how copy file to VM using powershell Copy-VMFile
+configure the Guest Services integration service
+
+2 two ways to remotely execute powershell in VMs from their hosts
+Invoke-Command -VMName <name>
+Enter-PSSession -VMName <name>
+
+3 most likely reason VM is paused-critical
+host is out of disk space
+
+4 effect of running Set-VM -Name VM1 -CheckpointType Production
+Hyper-v will first try to create a checkpoint (using VSS)
+to apply the checkpoint use Restore-VMCheckpoint
+
+5 four powershell commands to support Secure Boot
+Export-VM, Import-VM, Stop-VM, Update-VmVersion
+
+6 first powershell to run when moving VM
+Move-VMStorage "VMname" -DestinationStoragePath <path>
+
+7 name of roaming profile for User1 of Win10 machine
+User1.V5
+
+8 five steps for inplace migration to Win10
+scanstate /genconfig:config.xml
+edit the config file
+scanstate /config:config.xml /i:migdocs.xml /hardlink /nocompress
+install Win10 and any apps
+loadstate /config:config.xml /i:migdocs.xml /hardlink /nocompress
+
+9 super mandatory profile personal data available when logged on to the domain
+configure folder redirection using a GPO
+
+10 three prereqs to lock down kiosk so only single custom app can be used
+devices run only Win10 enterprise or education
+the app needs to be a Universal app
+devices run Win10 mobile, mobile enterprise, pro, enterprise or education
+devices must be provisioned with a provisioning package
+
+11 first command when using User State Migration Tool USMT
+Scanstate \\server1\migration /i:migapps.xml /i:migdocs.xml
+
+12 two things happen when redirect GPO no longer applies
+folder contents are copied back to the user profile
+special folders return to the user profile
+
+13 need to be able to use Windows to Go Creator
+perform an inplace upgrade to Win10 enterprise
+
+14 four steps to set new power plan as the active plan
+powercfg.exe /list
+powercfg.exe /export
+powercfg.exe /import
+powercfg.exe /setactive
+
+15 power option to configure for max battery life w/o enabling sleep or hibernate
+Power Buttons and Lid
+
+16 two ways to ensure documents are accessible to remote devices w/o network access
+for each share configure All Files and Programs are Automatically Available Offline
+configure Administratively Assigned Offline Files using a GPO
+
+17 when can user boot 32 bit Windows to Go image from USB drive
+32bit or 64bit with bios and 2gigs
+
+18 file sync solution for users of laptop, winphone, android, iphone
+OneDrive for Business
+
+19 Bitlocker recovery information Identifier and Recovery Key
+don't know
+
+20 let domain machine with TPM 2 and encrypted drive boot without PIN or Password
+install Windows Deployment Services WDS on the non-DHCP server
+enable GPO setting All Network Unlock at Startup
+
+21 two settings to enable Bitlocker Drive Encryption through a GPO linked to the domain
+select the setting Allow Bitlocker without a compatible TPM
+configure the setting Require additional authentication at startup
+
+22 change Bitlocker unlock from TPM + PIN to TPM + Network Unlock
+upgrade domain functional level to 2012
+install selfsigned or PKI-issued certificate on the WDS server
+ensure clients have UEFI in native mode 
+
+23 where store Bitlocker startup keys for devices without TPM
+on USB drives
+
+24 where store Bitlocker recovery keys
+Azure AD
+
+25 prevent laptop downloading Windows updates while tethered to a mobile phone network
+configure the mobile phone network as a Metered Connection
+
+26 which server type to allow access to Remote Desktop server without VPN
+Remote Desktop Gateway
+
+27 share winphone internet connection
+be aware that additional data charges may apply
+
+28 two protocols authenticate VPN connection using certs
+L2TP and IKEv2
+
+29 which tunneling protocol for VPN with certificate authenication
+IKEv2
+
+30 you can Remote into your home Win10 PC as Administrator but not as a normal user
+set a password for the user account on your home pc
+
+30 how enable remote access to your home Win10 PC
+configure computer so it never sleeps or hibernates
+add exception for Remote Desktop to your firewall
+create a new user account and add it to the Remote Desktop Users group
+create a password for the new user
+
+31 first step to use Sync your settings option to sync non-domain computers
+add a Microsoft Account
+
+32 configure computer to lock after 20 minutes of inactivity
+in the power plan modify the setting Turn Off the Display
+
+33 sync some files that were modified after you left the office
+use Sync settings in the Windows mobility center
+
+34 battery saver settings for push notifications, dim the screen
+app running / screen dimming after power drops below threshold
+
+35 configure User Experience Virtualization UEV so configuration changes immediately sync
+modify the setting SyncMethod
+
+36 which tool to install application compatibility shim
+sdbinst.exe
+
+37 which two pieces of information must you provide to add an app to Intune
+the publisher and the location of the setup files
+
+38 application deployment methods for different types of apps
+App that is part of an image and has full access: Install locally
+App that is updated frequently and users must use latest: Deploy as an App-V package
+App for XP not fully Win10 compatible: Install a compatibility fix
+
+39 deployment method using minimum number of installs and least effort
+Azure RemoteApp
+
+40 configure Application Virtualization App-V so apps only work when connected to the network
+disable the setting Disconnected Operation Mode
+
+41 support old XP application that is not supported on Win10
+create an app shim and deploy the shim in the compatibility database
+
+42 connection URL to configure RemoteApp and Desktop Connection sessions
+https // Servername.Companyname.com / RDWeb/Feed/webfeedname.aspx
+
+43 cheap way to run frequently updated 64 bit apps on tablets for windows, android and iOS
+create an app collection in Azure RemoteApp
+
+44 ensure devices can access app hosted in Azure RemoteApp
+download a client from https // www.remoteapp.windowsazure.com
+
+45 four steps to install programs in template image to deploy to Azure RemoteApp
+download and install the Office deployment tool
+create the CustomConfig.xml file 
+run Setup.exe /download c:\CustomConfig.xml
+run Setup.exe /configure c:\CustomConfig.xml
+
+46 which types of users can be assigned to each type of Azure RemoteApp collections
+dont know
+
+47 after driver update mouse and touch no longer work
+restart into the recovery environment and use System Restore
+
+48 restore computer to before App1 was installed
+use System Restore
+
+49 after reboot from recovery disk Reset this PC and Recover from a Driver are not available
+the user did not back up system files when creating the recovery disk
+
+50 reinstall Win10 but keep all of the user's files in place
+run the Windows 10 Settings utility and choose Reset This PC
+
+51 two settings changes to enable use of previous versions of a file
+in Win7 use Backup and Restore and in Win10 use File History settings
+
+52 ensure videos from the Videos library are not protected by File History
+from Exclude Folders select the Videos library
+
+53 ensure multiple versions of graphics files in one folder can be recovered
+use Windows Settings to add the graphics folder to the Protected Files
+
+54 three steps to move File History to a new USB drive
+stop using DriveA, select DriveB, turn on File History
+
+55 which control panel item to remove two Windows updates
+Programs and Features
+
+56 GPO settings to do these things
+Win10 updates approved independently from Win81: update service location = WSUSserver
+all updates installed the same day they are approved: client side targeting = Win10
+all computers configured to use the WSUS server: automatic updates = Auto Download and Schedule
+
+57 registry values to do these things
+all computers use WSUS1: wuserver = WSUSname
+target group = Win10
+other settings = 1 for true?
+
+58 configure computers to minimize network bandwidth needed to download updates
+enable Delivery Optimization on all computers
+
+59 publish App1 to the company portal using Intune
+deploy App1 to the All Users group and use Available Install approval
+
+60 prepare App1 for upload to Microsoft Intune
+obtain the App1.appx file and copy it to a folder
+
+61 first step to deploy custom app to all Win10 devices
+configure a side loading local Group Policy setting
+
+62 avoid password prompts when reconnecting to wireless network
+sign in to both devices using a Microsoft account
+
+63 Win Store and Personal apps same settings on both Win10 and Win81 devices
+configure both devices to use Windows account to log in
+
+64 two requirements for deploying a Windows Installer app through Intune
+the app must support Silent Installation
+the app must be uploaded to Cloud Storage
+
+65 provide single sign-on access without creating a computer account
+configure PC with private TCP/IP settings and select Connect to work or school
+
+66 first step to let domain tablet join your home group
+change the network location of the tablet to Private
+
+67 which two hardware types will support Windows Hello
+fingerprint reader + TPM 1.2+
+infrared camera + TPM 1.2+
+note Windows Hello does not support smart card authentication
+
+68 create DNS CNAME record so Win10 devices can register with Azure AD
+the CNAME record should be named enterpriseregistration.yourpublicdomain
+the CNAME record should point to the A record enterpriseregistration.windows.net
+
+69 change PIN for an unmanaged virtual smart card on a domain computer
+delete the virtual smart card
+
+70 already using Windows Hello (biometrics) and want to use multifactor authentication
+add a smart card as an authentication factor
+
+71 which request will be sent to the DNS server first
+name resolution request for the server
+
+72 configure client with routable IPv6 address
+netsh interface ipv6 add address <some address eg FEC0:0::9>
+
+73 powershell to disable IPv6 on all clients
+New-ItemProperty -Path HKLM\SYSTEM\CurrentControlSet\services\TCPIP6
+
+74 after you update the DHCP scope users in one subnet cannot access the internet
+the Default Gateway is misconfigured for that DHCP scope
+
+75 powershell to configure Windows Firewall to allow connections to Service1
+New-NetFirewallRule ... -Direction Inbound ...-LocalPort <Service1 port> -ActionAllow
+

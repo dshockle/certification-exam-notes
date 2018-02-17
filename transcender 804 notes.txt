@@ -1,0 +1,718 @@
+which two methods demonstrate Factory Method design pattern
+a: NumberFormat.getIntegerInstance
+   NumberFormat.getCurrencyInstance
+
+describe Factory Method pattern
+a: Virtual Constructor a method that instantiates a class commonly
+   referring to a subclass or shared interface
+
+what version of methods does this use Powerable p = new Switch();
+a: the version in Switch();
+
+what is a composition relationship
+a: a whole-part relationship
+
+a class contains a list and iterator what is the relationship
+a: a composition relationship
+
+what if an interface contains a method body
+a: compilation fails
+
+what methods are part of the DAO Data Access Object pattern
+a: createCustomer, deleteCustomer, getCustomer
+   but not getCustomerDetails or getCustomerID
+
+what is true about Singleton design pattern implementations
+a: a singleton is limited to concrete classes and enumerations
+   a singleton can implement the Serializable interface
+
+example of using an inner class
+a: void useLC()
+      class LC
+         void print()
+            System.out.println("local");
+      new LC.print();
+
+where is a local inner class declared
+a: within a method similar to a local variable
+   must be declared before use just like local variables
+   private class members are available within the enclosing method
+   do not use access modifiers just like local variables
+
+when a subclass declares the same method as the parent
+a: the subclass overrides the method
+
+when a subclass declares the same field as the parent
+a: the subclass hides the field
+
+to access an instance member of an enumeration
+a: use the enumeration variable or invoke from the enumeration constant
+   example Temperature.BOILING.getCelsius();
+
+when methods have no access modifier specified
+a: default access is package level
+
+demonstrate polymorphism
+a: Person p = new CollegeStudent();
+   System.out.println(p.getStatus());
+
+interface methods are implicitly what
+a: interface methods are implicitly abstract and public
+
+interface methods implemented in classes must be what
+a: public since interface methods are implicitly public
+
+if a class extends a parent what will instanceof say
+a: true, a subclass is an instance of its parent
+
+if a class extends an abstract parent what will instanceof say
+a: true, the subclass is an instance of its abstract parent
+
+what two keywords are required to declare a constant
+a: final and static
+
+when overloading methods what determines which version is invoked
+a: data type and order of arguments
+
+overriding abstract methods
+a: overriding interface methods must be public
+   private methods cannot be overridden
+   therefore overriding class methods cannot be private
+
+what methods characterize the Factory Method design pattern
+a: LogManager.getLogManager; DriverManager.getDriver, 
+   DriverManager.getConnection
+
+what methods are in the Class Data Access Object pattern
+a: getClass, findClass, addClass, deleteClass, updateClass
+
+how implement the Transfer Object pattern
+a: implement the Serializable interface
+
+what happens when you use toArray method on an enumeration
+a: compilation fails, enums don't have this method, Collections do
+
+invoking the implicit toString on a enum constant returns what
+a: the name of the constant eg "Blue" not the associated number
+
+abstract types versus concrete types
+a: abstract type can be an abstract class or interface
+   concrete type cannot contain abstract members
+
+what represents IS-A
+a: subclass extends parent
+
+what represents HAS-A
+a: class implements interface
+
+call nonstatic method from inner nonstatic class of outer nonstatic class
+a: new Outer().new Inner().method();
+
+polymorphism does not apply to what
+a: hidden members
+
+can a class or subinterface hide interface constants
+a: yes, constants
+
+Given Professional p = new Banker(); can Professional be abstract
+a: yes, Professional can be an abstract class
+   abstract methods in parent can be overridden in child
+
+how apply Singleton pattern
+a: private static Class instance
+   private Class() //constructor
+   public static synchronized Class getInstance()
+      if (Class.instance == null)
+          instance = new Class
+      return instance
+
+what about composition relationship
+a: methods in container class can delegate implementation
+   to methods in the constituent class
+
+what is another term for method delegation
+a: request forwarding 
+
+about class inheritance
+a: subclasses can implement methods also in super class
+
+field hiding
+a: static fields can be hidden by instance fields and vice versa
+
+override the equals method
+a: public boolean equals(Object obj)
+      if (obj instanceof Student)
+          return this.id == ((Student)obj).id;
+      else
+          return false;
+
+what if package is second executable line in file
+a: compilation fails. package statement must be first executable line
+
+what happens: Parent p = new Son(); ((Grandson) p).method();
+a: Code will throw ClassCastException because 
+   Son is not a subtype of Grandson
+   Explicit cast is for subtype not supertype
+
+what happens: Parent p = new Son(); p.method();
+a: method succeeds, Son's version of method executes
+
+what pattern uses a class to create other classes
+a: the Factory pattern
+
+how correctly use interface method
+a: use implements keyword
+   class must be abstract or else 
+   access modifier on method has to be public
+
+example of IS-A relationship
+a: classA extends classB
+       ClassA()
+          super();
+
+what pattern involves creating classes
+a: Factory pattern
+
+what does the Singleton pattern do
+a: restricts instantiation to only a single instance
+
+what does the Prototype pattern do
+a: clone concrete objects using an abstract class or interface
+
+what does the Abstract Factory pattern do
+a: derive from an abstract class or interface to create concrete objects
+
+can abstract classes be instantiated
+a: no
+
+what must concrete subclasses do
+a: implement abstract parent methods
+
+which version of method is invoked
+a: object type determines which method is invoked
+
+enumerations implicitly implement what interface
+a: Comparable
+
+compareTo returns what
+a: int, <0 if less, 0 if equal, >0 if more
+
+a final instance field needs to be set
+a: before the object is initialized //in constructor
+
+what does final mean in a class declaration
+a: class cannot be extended
+
+what does final mean in a field declaration
+a: field cannot be modified after initialization
+
+equal objects should return what
+a: the same hashcode
+
+what does hashCode method return
+a: an integer according to a formula you define
+
+can interfaces use throws keyword
+a: yes
+
+in interfaces
+a: all members public and variables static and final
+
+composition and generalization
+a: both aggregate implementation found in multiple classes
+
+how import math constants
+a: import static java.lang.Math.*;
+
+concrete classes that implement interfaces
+a: must override the interface methods
+
+method type for hidden static members determined by what
+a: reference type
+
+implement multiple interfaces
+a: delimit by comma eg class t implements int1, int2, int3
+
+abstract classs
+a: are extended not implemented
+
+   subclass can refer to parent constructor with super keyword
+
+what is generalization relationship
+a: type of IS-A relationship known as inheritance
+
+can inner classes be nameless
+a: yes these are 'anonymous' inner classes
+   these can be referenced by the interface type
+
+local variable visibility
+a: only within the blocks where they are declared
+
+example of subclass extending parent
+a: class NPC extends PC
+      NPC()
+        super("","");
+
+reference type determines what
+a: which methods are accessible
+
+object type determines what
+a: which version of each method is invoked
+
+data type of argument priority
+a: explicity, widening primitive, widening reference, boxing, unboxing
+
+what types can override Number
+a: BigInteger, AtomicLong but not primitives
+
+when parent class has private method
+a: same method in child has no relationship with parent's method
+
+print field from subclass example
+a: System.out.print(new Grandchild().getRelation().description);
+
+constructor in subclass
+a: compiler calls default super class constructor
+   if super constructor not explicitly called
+
+if field declared without any modifier
+a: default is package level access
+
+when overriding a method
+a: access modifier must be the same or less restrictive
+
+binary searches
+a: can only be performed on sorted lists
+   will output the position of the found element if it is in order
+   will output negative value if element is missing or out of order
+
+custom sort classes
+a: implements the Comparator interface and compare method
+   can sort by multiple criteria
+
+custom sort class example
+a: return s1.charAt(0) == s2.charAt(0) ?
+   s1.length().compareTo(s2.length()) : 
+   s1.toLowerCase().compareTo(s2.toLowerCase());
+   //sorts by first letter then by length
+
+passing null to function expecting an object
+a: runtime error IllegalArgumentException
+
+try to act on nonexistant file
+a: runtime error FileNotFoundException
+
+try with resources example
+a: try (StringReader sr = new StringReader(str);
+        StringWriter sw = new StringWriter();){ ...
+
+catch multiple exceptions
+a: catch parent exception or use | symbol to delimit exceptions
+   example InvalidPathException | IOException ex
+
+superclass of Exception is
+a: Throwable
+
+retrieve an array of exceptions thrown by a try with resources statement
+a: Throwable.getSuppressed
+
+use a command line argument that does not exist
+a: runtime error ArrayIndexOutOfBoundsException
+
+catch FileNotFoundException and BadFileLocationException
+a: FileNotFoundException, BadFileLocationException, InvalidPathException
+
+how can main method use class that throws Throwable
+a: add throws Throwable to main or 
+   wrap call in try block with catch statement
+
+try block finally block
+a: code in try doesn't continue after the point of the exception
+   code in finally always executes even if there is no exception
+
+can you put a try catch inside a for loop
+a: yes you can if you catch exception loop may continue
+
+assertions at runtime
+a: by default assertions ignored at run time
+   unless the -ea command line switch is used
+
+if you try to compare incompatible types
+a: runtime error ClassCastException
+
+method to sort strings without relying on natural order
+a: public int compare(String s1, String s2)
+
+overriding methods and exceptions
+a: can throw a checked exception of the overridden method
+   can throw a subclass of the checked exception
+   can ignore the exception
+
+to make a class useable in a try with resources statement
+a: implement the AutoCloseable interface
+
+most generic catch statement
+a: catch Exception
+
+what handling is required for Runtime exceptions
+a: none is required
+
+how delimit thousands in large numbers
+a: use underscores not commas eg int pop = 60_754_308;
+
+regular expression match character that is not a
+a: [^a]
+
+StringBuilder insert method
+a: sb.insert(indexToInsertAt, "value to insert");
+
+regular expression match first fiel letters of a word in a string
+a: \b\w{5}
+
+printf function what does %c formatter do
+a: convert integer value to char equivalent, 97 is a
+
+what type is deprecated and does not support enhanced for iteration
+a: StringTokenizer is deprecated, use split method instead
+
+Scanner.findinline method
+a: findinline accepts regex and returns next match in source
+   findInLine("x\\d+")); returns x and any trailing digits
+
+add values to a TreeMap (sorted map)
+a: use the put method eg students.put(5, "Amy");
+
+print a TreeMap
+a: print(mymap.values()); outputs [value, value, value]
+
+generic collections
+a: use angle brackets around the type
+
+generic collection can they hold other generic collections
+a: yes eg Map<Integer, List<String>> maplist = new HasMap<>();
+
+sorted map lastkey method
+a: returns last sorted key in the map
+   to get value associated with last key in map use
+   eg grades.get(grades.lastKey());
+
+what result Map<Double, List<String>> grades = new
+HashMap<Double, ArrayList<String>>();
+a: compilation fails, List<String> does not match ArrayList<String>
+
+what types extend SortedMap
+a: TreeMap and NavigableMap
+
+when bounding generic parameters use what keyword
+a: extends eg class ObjectFileWriter<T extends Serializable>
+   note we use extends not implements even with an interface type
+
+generic containers store items as what type
+a: as Object, so returned item must be cast to correct type
+
+comparing primitive with wrapper values
+a: autoboxing will handle it
+
+assigning a raw type to a checked type
+a: will generate an unchecked conversion warning
+   eg ArrayList<String> list = new ArrayList(); // warning
+
+on a list what do get and remove methods return
+a: both return the item at the specified index
+   get does not remove it from the collection while remove does
+
+how instantiate generic parameter
+a: cannot do it directly instead use param.Instance()
+
+default value for any object field
+a: null
+
+what do list methods pollLast and removeLast return
+a: the last element in the list
+
+what if you add null to a sorted collection
+a: runtime error exception because null references 
+   cant be tested for equality
+
+when .equals is used on incompatible types (like String and Boolean)
+a: no exception, it simply returns false
+
+Matcher class replaceFirst, replaceAll methods return what
+a: a new string
+
+about CallableStatement objects
+a: they contain stored procedures
+   they support both input and output parameters
+
+about PreparedStatement objects
+a: only support input parameters not output parameters
+
+about Statement objects
+a: do not support parameters, only support simple SQL statements
+   do not support multiple open result sets
+   if a Statement is executed more than once previous result set closed
+
+trying to access a closed (SQL) Statement result set
+a: runtime error SQLException
+
+methods needed to establish a connection using JDBC 4
+a: DriverManager.getConnection, DataSource.getConnection
+
+about JDBC drivers
+a: must include Statement, ResultSet and Connection objects
+
+about Watch Service API
+a: will poll file system if it does not support file change notifications
+
+how create a connected RowSet object using defaults
+a: JdbcRowSet rs = new JdbcRowSetImpl();
+
+how create a connected RowSet object with customization
+a: RowSetFactory factory = RowSetProvider.newFactory();
+   JdbcRowSet rs = factory.createJdbcRowSet();
+
+PathMatcher match files with 3 character name ending with .jar or .class
+a: PathMatcher matcher = 
+   FileSystems.getDefault().getPathMatcher("glob:???.{jar,class}");
+
+problem SQLException No suitable driver found for jdbc:mysql://localhost
+a: to solve Add the JAR file for the MySQL JDBC driver to the class path
+
+four attributes in DOSFileAttributeView but not BasicFileAttributeView
+a: archive, hidden, readonly and system
+
+three attributes provided by BasicFileAttributeView
+a: creationtime, lastAccessTime, lastModifiedTime
+
+to make following updates execute as single transaction
+a: cn.setAutoCommit(false)
+   .executeUpdate(update1)
+   .executeUpdate(update2)
+   cn.commit()
+
+to control a transaction explicitly
+a: first disable auto-commit mode with setAutoCommit(false)
+   execute updates
+   call the commit method
+
+major version of MySQL driver
+a: will be 5
+
+about disconnected RowSet objects
+a: CachedRowSet and FilteredRowSet are commonly used interfaces
+   JoinRowSet objects have SQL Join capabilities
+   WebRowSet objects do not have SQL Join capabilities
+
+by default the cursor of a result set is set where
+a: before the first row
+
+to move the cursor to the first row of a result set
+a: use ResultSet class next method
+
+glob patterns that match .class or .jar files
+a: {*.class, *.jar},  *.{class, jar}
+
+what cursor movements does a scrollable result set support
+a: both forward and backward
+
+FileInputStream class read method returns what
+a: next byte or -1
+
+console method that reads input without echoing typed characters
+a: char[] pwd = System.console().readPassword();
+
+redirect standard output to text file
+a: System.setOut(new PrintStream(new FileOutputStream("output.txt")));
+
+try with resources limitation
+a: resource in try with resources cannot be reassigned
+
+FileOutputStream and RandomAccessFile constructors accept what
+a: either a file name or a File object
+
+default when instantiating a FileOutputStream
+a: overwrite the existing file
+   a boolean in the constructor can indicate append mode
+
+behavior of + operator
+a: concatenate strings and add numbers but if the 
+   first operand is a string then all operands will concatenate
+
+what does BufferedReader class skip method do
+a: ignores and discards a specified number of characters
+
+what does the true parameter signify FileWriter("file.txt", true)
+a: append text to file rather than overwriting file
+
+what are the standard streams in java
+a: System.in, System.out and System.err
+
+Files.move and Files.copy when file already exists in destination
+a: destination is overwritten
+
+what happens BasicFileAttributeView class setOwner method
+a: compilation fails BasicFileAttributeView doesnt support owner attribute
+
+glob patterns that match .class or .jar extensions
+a: {*.class,*.jar},  *.{class,jar}
+
+Path class resolve method
+a: appends a partial path to an existing path object
+   eg String res = path1.resolve(path2).toString();
+
+Path class getName method
+a: gets path part delimited by path separators
+   eg path = Paths.get("C:\\top\\low\\text.txt);
+      path.getName(1).toString(); // returns low
+
+what is a livelock condition
+a: livelock occurs when two or more threads are too busy responding
+   to each other to complete their tasks
+
+what is a race condition
+a: where two threads compete for the same resource
+
+AtomicInteger class incrementAndGet method
+a: increments value and returns value in single atomic operation
+
+advantage of Lock objects
+a: can stop from acquiring a lock if it is unavailable or time lapses
+
+differences between RecursiveAction and RecursiveTask
+a: RecursiveAction cannot return a result while RecursiveTask can
+   getRawResult returns null for RecursiveAction
+
+ConcurrentMap class replace method
+a: replaces value for given key (only if key exists)
+
+modifications on ArrayList with an iterator
+a: not thread safe, so may throw exception in threaded environment
+
+thread-safe version of ArrayList
+a: CopyOnWriteArrayList
+
+begin a simple child thread
+a: Thread.start
+
+what does this do: ex = Executors.newScheduledThreadPool(5);
+a: creates 5 threads each supporting a single task
+
+list of tasks with wait periods
+a: DelayQueue
+
+Executors class newScheduledThreadPool method
+a: create a thread pool, an int arguments specifies the number
+
+RecursiveTask class fork method
+a: split worker thread into two threads
+
+RecursiveTask class join method
+a: combine two previously forked worker threads
+
+Data class combine method
+a: combine result from two tasks
+
+ReadWriteLock class call what before read method
+a: lock method
+
+three methods affect frequency and duration of thread
+a: setDaemon, setPriority and yield
+
+default priority
+a: NORM_PRIORITY
+
+lowest priority
+a: MIN_PRIORITY
+
+yield method
+a: causes current thread to give up its time slice
+
+setDaemon
+a: if true, JVM may exit before thread terminates
+
+what extension for properties file
+a: .properties
+
+join method
+a: cause current thread to wait until another thread terminates
+
+sleep method
+a: cause thread to stop for specified milliseconds
+
+suspend method
+a: deprecated do not use
+
+properties files
+a: properties are set using name-value pairs
+   have an extension of .properties
+   there should be one for each supported language
+   must be in the CLASSPATH
+
+keyword synchronized
+a: can be applied to static and final methods
+   cannot be applied to abstract methods
+   can be applied in enumerations
+   cannot be applied in interfaces
+
+thread class start method
+a: cannot be invoked more than once on the same thread
+
+main thread and child threads
+a: main thread will output first, child threads could be any order
+
+deadlock
+a: two threads are waiting for each other to complete
+
+ReadWriteLock interface
+a: there are two locks, for read-only and for write operations
+
+Runnable objects
+a: can be run using ExecutorService interface execute method
+
+what if current thread interrupted while sleep executes
+a: InterruptedException
+
+RecursiveAction class compute method what is the signature
+a: protected void compute()
+
+how make ArrayList read/write operations thread-safe
+a: declare them in a synchronized block or
+   replace ArrayList with CopyOnWriteArrayList class
+
+liveness problems where at least one thread is not waiting
+a: Livelock, Starvation
+
+initialize Locale variable using Local.Builder class
+a: setLanguage("en").setScript("Latn").setRegion("UK").build();
+
+which class create random numbers in multi-threaded application
+a: SecureRandom
+
+retrieve ResourceBundle
+a: ResourceBundle.getBundle("GUILabels", Locale.FRENCH);
+
+display current date using UK format
+a: dFormat=DateFormat.getDateInstance(DateFormat.DEFAULT, Locale.UK);
+
+valid signature for the run method of a thread
+a: public void run()
+
+livelocked threads
+a: threads are too busy responding to each other to complete their work
+
+how implement counter accessed by multiple threads
+a: use AtomicInteger
+
+what does AtomicInteger do
+a: let you implement counter accessed by multiple threads
+
+four ways to create a Locale object
+a: Locale.Builder, Locale constructors, 
+   Locale constants, Locale.forLanguageTag factory method
+
+two ways to provide synchronization
+a: public static synchronized void concurrentMethod(data)
+   synchronized(MultithreadClass.class)
+
+the join method
+a: lets a method wait for another thread

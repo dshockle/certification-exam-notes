@@ -1,0 +1,414 @@
+﻿1 deciding on path to Win10 and number of new devices needed
+if you need Hyper-v you need 64 bit processer with SLAT
+
+2 deciding on path to Win10 and number of new devices needed
+if you need Secure Boot you need uefi 2+
+
+3 deciding on path to Win10
+if you need Hyper-v you need 64 bit processer with SLAT
+
+4 use which command to verify Hyper-v compatibility for existing devices
+systeminfo.exe
+
+5 inplace upgrade Win7 pro to Win10 pro w/o internet
+update devices to sp1 using USB then run setup.exe from a network share
+
+6 clean install win10 w/o optical drives and w/o internet
+boot from USB and install windows
+
+7 inplace upgrade Win81 to Win10 w/o internet
+run setup.exe from a network share
+
+8 inplace upgrade Win8 to Win10 least effort
+use Windows Update
+
+9 which slmgr.vbs switch to verify Win10 pcs are getting licenses from Volume activation services server
+slmgr /dlv
+
+10 which slmgr.vbs switch to disable KMS activation
+slmgr /act-type
+
+11 which slmgr.vbs switch to attempt online activation
+slmgr /ato
+
+12 which slmgr.vbs switch to activate remote machine without connecting it to domain
+slmgr /ipk
+
+13 ensure communication between public device and collection server is secure
+   should you enable Windows firewall and configure inbound, output and connection rules
+   yes
+
+14 ensure communication between public device and collection server is secure
+   should you add wireless nic to server create new VLAN for public machine
+   no
+
+15 ensure communication between public device and collection server is secure
+   should you add wired nic to server create new VLAN for public machine
+   no
+
+16 ensure communication between public device and collection server is secure
+   should you set up public machine to use Direct Access
+   yes
+
+17 disk storage that tolerates failure of one drive
+   should you use two-way mirror Storage space with two disks and Resilient file system
+   yes
+
+18 disk storage that tolerates failure of one drive
+   should you use three-way mirror Storage space with five disks and NTFS
+   no
+
+19 disk storage that tolerates failure of one drive
+   should you create a Parity storage space with three disks and NTFS
+   no
+
+20 disk storage that tolerates failure of one drive
+   should you create a Parity storage space with seven disks and Resilient file system
+   yes
+
+21 set up a homegroup
+   ensure that IPv6 is enabled
+
+22 you have a baseline image and restore points, how restore system to an earlier point
+   Backup and Restore (win7) or System Protection
+
+23 synchronize tablet when outside the network
+   OneDrive
+
+24 which tool to save older versions of Office documents
+   File History
+
+25 which authentication methods are available when you have a laptop with webcam
+   Picture passwords, PIN
+
+26 which authentication methods are available when you have a tablet
+   Windows Hello (face recog), Picture passwords, PIN
+
+27 which authentication methods are available when you have a tablet with fingerprint scanner
+   Picture passwords, Fingerprint passwords, PIN
+
+28 which authentication methods are available when you have a laptop
+   Picture passwords, PIN
+
+29 upgrade Win7 pro 32 bit to Win10 pro 64 bit
+   clean install Win10 [cannot upgrade 32 bit to 64 bit]
+
+30 prepare to upgrade Win7 pro 64 bit w/1 gig ram to Win10
+   upgrade RAM to 2+ gig, update to win7 to sp1+
+
+31 requirements to run Win10 Hyper-v
+   Pro or Ent, 64 bit, 4 gig ram, bios with hardware virtualization support
+
+32 features in Win10 Enterprise but not pro
+   Direct Access and AppLocker
+
+33 inplace upgrade Win7 pro 32 bit to Win10
+   Win10 Pro or Ent 32 bit
+
+34 hardware needed for Virtual smart card
+   TPM 1.2 or later
+
+34 hardware needed for Secure boot
+   UEFI firmware instead of BIOS [does not require TPM support]
+
+34 hardware needed for Miracast (peer to peer wireless screen casting)
+   WiFi adapter that supports WiFi direct
+
+35 upgrade Win80 home to Win10 via Windows Update do what first
+   download and install the Win81 update
+
+36 two ways to restore lost user files after upgrade from Win7 to Win10
+recover the files from the Windows.old folder, or roll back installation from Win10 to Win7
+
+37 three steps to configure dual boot Win7 Win10
+create MBR partitioned VHD, apply the Win10 image to the VHD, set the Win10 environment to boot
+
+38 Developer PCs currently have Win81 give easy access to Win81 and Win10
+enable Hyper-v and install Win10 on a VHD
+
+39 IT devices currently have Win81 two ways to give easy access to Win81 and Win10
+create dual boot installation, or create Windows To Go workspace on USB drive
+
+40 which image file for Win10 bootable USB using Windows To Go
+Windows 10 Enterprise .WIM file
+
+41 how remove preinstalled apps and configuration settings
+run a clean install from Win10 installation media
+
+42 command to prepare setup with non-signed drivers
+Dism.exe /image:image.wim /add-driver /driver:PathToDriver/recurse /forceunsigned
+
+43 return Win10 pro laptop to prior state after auto update of graphics card
+device mgr, card properties, choose Roll back driver
+
+44 install unsigned drivers on Win10 pro
+run shutdown /r /o /f /t 00,
+select troubleshoot and advanced options, 
+select startup settings and reboot, 
+F7 during reboot (disable signing enforcement),
+install the unsigned driver using device mgr
+
+45 after upgrade graphics driver not compatible with Win10
+use Program compatibility troubleshooter to install a Win7 driver
+
+46 apply and test device driver file from an MSI file
+run the expand command to extract the device driver files
+
+47 which tool to turn off Cortana on Win10
+Notebook
+
+48 how disable Action Center on Win10
+create batch file that adds DisableNotificationCenter DWORD 1
+
+49 two commands to script deployment of Hyper-v to Win10 machines
+Dism.exe, or Enable-WindowsOptionalFeature
+
+50 how update virtual machine to let it connect to the internet
+create an external virtual switch
+
+51 which tool to ensure news is not displayed on Win10
+Cortana Notebook
+
+52 which command to change how laptop behaves when running on battery power
+powercfg
+
+53 group policy so Edge does not autofill forms and blocks third party cookies
+disable the autofill policy and enable the cookie policy
+
+54 on Win10 prevent users from changing accessibility options
+enable group policy Disable Changing Accessibility Settings
+enable group policy Disable Control Panel
+
+55 four steps to apply custom Start Menu on Win10 and lock the apps
+customize start menu on one computer
+run Export-StartLayout on that computer
+share the folder containing the custom Start menu
+create and link a Group Policy Object applying the custom start menu
+
+56 web portal with ActiveX controls not rendering on Win10
+create and link a Group Policy Object to use IE 11 as the default browser
+
+57 which tool for each task
+   configure and apply Win10 images on new devices OEM: WICD
+   create and deploy Win10 images on new devices business: WICD
+   customize devices small business: WICD
+   customize devices medium business: WICD
+   create and deploy Win10 images on new devices large business: Microsoft Deployment Toolkit MDT
+
+58 what files for images and packages with WICD
+[CustomPackage].xml, [Images].wim
+
+59 first step to install WICD
+download and install Win10 Assessment and Deployment Kit ADK
+
+60 what script to verify activation status of Win10 computers
+use slmgr.vbs /dli
+
+61 which switch with slmgr.vbs to activate Win10 using volume license KMS host key
+slmgr /ato
+
+62 create installation media with all third-party drivers needed
+WICD windows imaging and configuration designer
+
+63 powershell script to find and format all new hard drives
+Get-Disk | ..."RAW"...New-Partition...Format-Volume
+
+64 powershell to create new VHD
+New-VHD -Fixed c:/vhd/virtualdisk.vhdx -SizeBytes 100 GB
+
+65 Win10 with 5 disks which storage solution to optimize perf and protect against drive failure
+two-way mirror space
+
+66 powershell command to add existing disk to an existing storage pool
+Add-PhysicalDisk
+
+67 three steps to remove drive from existing storage pool
+View all physical drives in Storage spaces
+Select the failing drive and choose Prepare for removal
+Select remove drive when the drive is listed as ready
+
+68 three steps to share USB printer on the network
+printer properties, change options on the sharing tab, share this printer
+
+69 how disable HomeGroup for all Win10 and Win81 machines
+create and link a GPO to disable the HomeGroup Provider service
+
+70 command line to install OneDrive for Business
+OneDriveSetup.exe /silent | OneDrive.exe /configure_business:<tenantID>
+
+71 powershell to share local printers on the network
+Set-Printer
+
+72 determine effective permissions both locally and when accessing through a file share
+   Parent folder set to NTFS read
+   NTFS full and Share full
+   NTFS none and Share full
+   NTFS read and write and Share full
+
+73 three steps to install LOB app to domain clients not using Windows Store
+deploy an enterprise policy to turn on side loading
+import the security certificate for the appx package
+run the Add-AppxPackage powershell command
+
+74 prereqs for Windows Store for Business
+   Administrator: IE 10+, Azure AD account
+   User: Win10 only, Azure AD account
+
+75 Store for Business what Permissions for each role: 
+   Admin: account settings, acquire apps, distribute apps
+   Purchaser: acquire apps, distribute apps
+   Device Guard Signer: device guard signing
+
+76 powershell to install .NET 351 on select clients from a local source
+Enable-WindowsOptionalFeature -Online -FeatureName:NetFx3 -All -Source d:\source\SxS -LimitAccess
+
+77 how access Windows Store Group Policy policies
+add the Desktop experience feature to a domain controller
+
+78 configure which Group Policy to prevent synchronizing corp data to private OneDrive account
+Block Microsoft Accounts - specify user cannot add or log on with Microsoft Account
+
+79 use what account type to prevent users installing apps outside your Windows Store for Business
+Azure Active Directory account
+
+80 how is in-app purchasing handled when using Windows Store for Business
+purchase done with user's Microsoft account paid at the time of purchase
+
+81 which WADK tool to add custom packaged drivers and applications
+Windows System Image Manager (WSIM)
+
+82 which tool to disable some apps that launch at startup
+task manager
+
+83 powershell to determine if computer has been provisioned for Direct Access
+Get-DAClientExperienceConfiguration
+
+84 configure domain computers to not connect automatically to WiFi
+create and link a GPO to disable WiFi Sense for network clients
+
+85 five steps to configure remote machines to access domain through Direct Access
+create a provisioning package from a computer joined to the domain
+securely transfer the provisioning package to the remove computer
+apply the provisioning package on the remote computer
+join the remote computer to the domain
+reboot the remote computer
+
+86 which describes Direct Access and VPN
+connects both Windows and non-Windows: VPN
+supports automatic connectivity: DirectAccess
+clients must be in a domain: DirectAccess
+does not require IPv6: VPN
+provides authentication and encryption: DirectAccess
+
+87 how limit laptops to Public and Domain networks and disallow Work and Home
+edit registry on each computer
+
+88 which three ports open to support: IPSec encryption, non-domain clients, certificate based authentication
+udp 500, udp 4500, udp 1701
+
+88 which protocol UDP or TCP to support: IPSec encryption, non-domain clients, certificate based authentication
+UDP
+
+89 prepare remote Win10 machines so you can remotely manage them with powershell 
+configure WinRM service to start automatically
+
+90 powershell to enable remote mgmt with powershell for remote machines
+Enabled-PSRemoting
+
+91 two options to let powershell manage remote computers
+use HTTPS protocol and Add the remote machine to TrustedHosts
+
+92 how enable Remote desktop to Win10 Home system
+upgrade Home system to Win10 Pro and then system\remote\Allow remote connections
+
+93 two steps to set up Easy Connect
+generate password for connection
+create an invitation file
+
+94 disable Remote Desktop Assistance on all domain clients
+create GPO to disable Solicited Remote Assistance 
+
+95 which tool to let Win10 machines access multiple VMs on AppHost
+remote desktop connection
+
+96 which command to initiate an Easy Connect session
+MSRA
+
+97 which tool for each scenario
+request support via email: remote assistance
+run cmdline utils on remote machines: powershell
+configure gui utils in a mgmt console: management console
+give users access to apps migrated to VMs: remote desktop
+
+98 powershell to configure computer to be powershell mgmt destination
+Enable-PSRemoting
+
+99 powershell to remove all Universal apps for Win10 domain clients
+Get-AppxPackage -AllUsers | Remove-AppxPackage
+
+100 three steps to restore Windows store on Win10 computers
+run Get-AppxPackage
+note the [Package] WindowsStore entry 
+run Add-AppxPackage
+
+101 two settings to minimize net traffic for mobile users
+disable Windows update delivery optimization
+set the cellular connection to 'metered'
+
+102 install publicly released update not yet approved in your WSUS server
+use Microsoft Update
+
+103 rollback a Windows update
+go to View your update history and uninstall the update
+
+104 powershell to ensure Universal apps are not installed for new users
+Get-AppxProvisionedPackage -online | Remove-AppxProvisionedPackage -online
+
+105 powershell to restore the Windows store app in Win8
+Add-AppxPackage -register "C:...[package].xml" -DisableDevelopmentMode
+
+106 remove update from remote clients that get updates directly from Windows Update
+use control panel Programs and Features
+
+107 reduce traffic from updating clients in remote offices
+use Delivery Optimization for all updates
+
+108 which service branch option for each scenario
+2000 POS system security updates only: LongTerm Servicing Branch
+10 systems early previews of feature updates: Windows Insider
+1000 kiosks feature updates inplace upgrades only: LongTerm Servicing Branch
+100 domain clients getting updates after testing: Current Branch for Business
+10 system feature updates when released: Current Branch
+
+109 advanced subscription setting to get notified about security audit events asap
+use the Minimize Latency option
+
+110 powershell to get the status of Windows Defender
+Get-MpComputerStatus
+
+111 powershell to run windows defender scan on remote computer
+Start-MpScan
+
+112 tool to view summary of performance and crashes
+Reliability Monitor
+
+113 configure permissions to collect log info from domain clients
+Add collector machine to the Event Log Readers Group on each client 
+
+114 tool to get alert when drive has less than 10 gigs free space
+Performance monitor
+
+115 tool to monitor realtime usage statistics on Win10
+Resource monitor
+
+116 tool to find which application is using a file you want to delete
+Process Explorer
+
+117 tool to configure printer on remote computer
+Print Management
+
+118 powershell to inspect remote domain computers for malware
+Get-MpThreatDetection
+
+119 configure domain clients to be subscription sources
+run winrm quickconfig

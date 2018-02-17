@@ -1,0 +1,418 @@
+﻿you deleted files and now are unable to open System Recovery Options
+boot from Win7 install DVD > Repair > Startup Repair
+
+to be able to revert planned registry changes
+create a system restore point
+
+when you boot to safe mode
+only minimal drivers are loaded
+
+which recovery tool restores Windows to specific time
+system restore
+
+when should you use Last Known Good Configuration option
+when a bad registry entry prevents Windows from starting
+
+which tool to remove downloaded apps, temp files and offline web pages
+disk cleanup
+
+which tool to configure machine to periodically run Disk Cleanup
+task scheduler
+
+primary purpose of Disk Cleanup
+remove unneeded files and reclaim disk space
+
+two things that Task Scheduler does
+configure a program to run when a triggering action occurs such as user log on
+configure a program to run at regular intervals such as daily, weekly or monthly
+
+when run Disk Defragmenter
+when disk fragmentation is above 10 percent
+
+ensure hotfixes applied as they become available
+turn on automatic updates
+
+display the updates that have been installed
+select Windows update in control panel
+
+true about Windows Update optional updates
+optional updates are not installed automatically
+
+two requirements for an encrypted folder on Win7
+Win7 Professional, Ultimate or Enterprise and NTFS
+
+move files between computers without internet
+usb drive
+
+optical storage with maximum capacity
+blue ray double layer
+
+fastest way to back up to external device without internet
+eSata
+
+describes a VHD
+virtual hard drive - a logical disk used by Hyper-v
+
+two solid state storage devices
+SD card, usb drive
+
+which tool to add blue tooth printer in Win7
+control panel > hardware and sound
+
+first thing to try when Windows does not have a driver for your plug and play device
+run windows update and check the optional updates
+
+which technology used to connect to a PAN
+bluetooth - pan = personal area network
+
+add what device to computer so you can use a camera memory card
+media reader
+
+needed to connect laser printer directly to network
+a network adapter
+
+how connect old non Plug n Play printer
+download driver from vendor and install via device manager
+
+true about Plug n Play devices
+they are automatically discovered and configured
+
+most likely use for Bluetooth
+connecting wireless mouse and keyboard
+
+usb printer stops while printing and you cannot delete it using control panel
+remove all print jobs from the print queue
+
+how connect printer wirelessly to laptop up to 30 feet
+bluetooth
+
+the print queue contains what
+print jobs wating to be processed
+
+how share local printer from XP computer
+enable sharing using Printers and faxes
+
+true about Print to file
+it saves the formatting of a document so it can be printed later
+
+two things true about network printers
+directly attach to the network, assigned ip addresses
+
+install new driver and cannot detect device, try what first
+run device manager > revert to previous driver
+
+shared video memory 
+uses part of RAM for video, reducing the amount available for Windows
+
+troubleshoot new usb device detected but not installed or accessible
+install the device driver then reconnect the device
+
+which two may require a device driver
+a mouse, a video card
+
+what can you do with Device Manager
+install a driver for a new device
+
+what can you do with Devices and Printers
+view all devices attached to the computer
+
+how require smart card to unlock data on usb drive
+BitLocker drive encryption
+
+provice decryption credentials for Vista Ultimate Bitlocker drive encryption
+key stored on a TPM chip, key stored on a USB drive
+
+why use Bitlocker instead of Encrypting file system
+preboot security ensures drive not moved to another computer
+operates at lower level and provides better security
+
+why use Encrypting file system
+encrypt files on an NTFS file system
+
+why use NTFS instead of FAT32
+to support larger disk drives, to store files larger than 4 gig
+
+which file system supports files greater than 4 gig
+NTFS
+
+considerations of 64 bit versus 32 bit Windows
+whether or not your applications are compatible
+
+why create HomeGroup on home wireless network
+to share files, folders and printers
+
+limits on a domain member laptop joining a HomeGroup
+laptop cannot provide access to its files or printers
+
+what happens to NTFS perms when file copied to folder on different server
+file assumes the permissions of the destination folder
+
+what are 'effective permissions'
+perms that have been granted only through group membership
+
+what are the three valid share permissions
+Full control, Read, Change
+
+how access video files through one location when they are on multiple folders and drives
+create a library and add the files to it
+
+when you delete a library what happens to the files in that library
+the files remain (in their original locations)
+
+why use Offline Files
+to access network files while disconnected
+
+why use Libraries
+to logically organize folders into groups
+
+how easily access files from multiple folders in one location
+use a library
+
+what can libraries contain
+local and network folders
+
+true or false libraries contain individual files
+false - libraries contain only folders
+
+to be included in a library a network folder must be what
+indexed and/or marked as being available offline
+
+minimum available disk space to install Win7 64 bit
+20 gigs
+
+minimum available disk space to install Win7 32 bit
+16 gigs
+
+which feature requires an upgrade from Win7 Starter to Home Premium
+windows media center
+
+how much RAM does Win7 require
+32 bit needs 1 gig, 64 bit needs 2 gig
+
+how upgrade pc with Win7 32 bit to Win10 64 bit
+do a clean install only, you cannot upgrade from 32 bit to 64 bit
+
+identify correct Win10 edition for each feature
+Win10 Pro - bitlocker and hyper-v
+Win10 Edu - branch cache and applocker
+Win10 Hom - device encryption and windows update
+Win10 Ent - direct access and cortana
+
+how run old non-compatible XP apps in Win7
+run Win7 Pro, Ultimate or Enterprise and use XP Mode
+
+what upgrades are supported by Windows anytime upgrade
+starter to home, pro or ultimate
+home to pro or ultimate
+pro to ultimate
+
+use what to inventory apps and see if they are compatible with Win7
+application compatibility manager (ACM)
+
+after upgrade to Win7 one app not working, try what first
+modify the Compatibility mode of the application
+
+to upgrade XP Pro to Win7 and maintain user files and settings
+custom installation > choose to migrate user settings
+
+true false you can directly upgrade XP to Win7
+false - there is no direct upgrade path from XP to Win7
+
+two tools to migrate user settings from XP to Win7
+easy transfer and user state migration tool
+
+to upgrade Vista to Win10 and maintain user files and settings
+upgrade to Win7 or Win8 and then upgrade to Win10
+
+run Win7 install from USB on a system without an OS, do what first
+purchase Win7 as an ISO file and download to another computer
+
+zero touch intallation ZTI and light touch installation LTI
+only ZTI requires System center configuration manager 
+
+run Win7 install from USB on a system without a DVD, do what first
+run diskpart and clean the USB device
+
+all steps to run Win7 install from USB on a system without a DVD
+run diskpart and clean the USB device
+create primary parition, make it active, format it FAT32, assign it a letter
+copy the DVD installation files to it
+run installation from it
+
+use which command to add network drivers to Win PE installation image
+Dism /Add-Driver /Image:"C:\WinPE_amd64\mount" /Driver:"C:\SomeDriver\somedriver.inf"
+
+Windows 32 bit only sees 4 gig RAM want to see all 8 gig
+perform a clean install of Win10 64 bit
+
+true about Virtual address space in Kernel mode
+kernel mode code shares a virtual address space
+
+true about Virtual address space in User mode
+user mode mode uses a private virtual address space
+
+true about the effect of crashes in User mode and Kernel mode code
+if user mode code crashes the entire operating system does not crash
+if kernel mode code crashes the entire operating system crashes
+
+faster performance with page file on SSD or HDD
+page file should be on the SSD
+
+sound tone when user presses Caps, Numlock or Scrollock
+configure toggle keys
+
+how enable acess to Administrative Tools with the fewest steps
+configure the Start menu properties
+
+run disk defrag every month automatically
+use Task scheduler
+
+how enable locking of modifier keys Shift, Alt and Ctrl
+turn on Sticky keys
+
+what does setting service startup type to Disabled do
+prevents the service from being manually started
+
+how configure how long it takes to turn off the screen when the computer idles
+modify the power plan settings
+
+how display compressed NTFS files in a different color
+modify the Windows explorer settings
+
+how prevent Recycle bin displaying on the desktop
+select Personalization in control panel
+
+how make four files quickly available from app pinned to taskbar
+create a jump list containing the files
+
+what do jump lists do
+let you quickly access files, folder and web sites
+
+how do you create a jump list
+pin app, right click app icon to see recently used files and choose Pin to this list
+
+do what when local user profile might be corrupted
+use control panel > user accounts to create a new user account
+add the new account to any groups needed
+copy files over to the new user account
+
+primary benefit of roaming profile
+same desktop on different computers
+
+how open a Quick menu with access to various administrative tools
+right click Windows button or press Windows Key + X
+
+where set config so you can run Powershell from the Quick link menu
+settings > personalization > taskbar settings
+
+how momentarily disable all notifications
+enable Quiet hours
+
+which tool to customize boot and select which apps will auto load
+system configuration (msconfig.exe)
+
+how emulate Edge for Win10 mobile using Edge on Win10 desktop
+more > developer tools > emulation > [select browser profile]
+
+three ways to start Win10 computer in low resolution video mode
+run shutdown /o, use settings->Update and security, run msconfig
+
+what feature does Win10 hyper-v not support
+GPU virtualization
+
+how get info on performance of all apps on computer
+taskmgr->app history->options->show history
+
+use what to create a custom mgmt tool to auto launch select Admin tools to manage remote computers
+microsoft management console (MMC)
+
+which tool to remotely create a system restore point on Win7 computers
+powershell scripting using the ws-man protocol
+
+how enable remote support for Win7 computers with minimal changes
+use powershell scripts and windows management interface (WMI)
+
+which tool lets you remotely manage a Win2008 server from a Win7 client
+server manager
+
+how configure Vista computer to accept WS-Management requests from a remote computer
+install and configure WinRM
+
+two efficient tools to create run and debug Powershell scripts
+visual studio, powershell ISE
+
+on Win7 laptop when would you use the Sync Center
+to check recent sync results with offline files
+
+which tool to modify common mobile settings for a laptop
+windows mobility center
+
+how connect from home XP machine to office XP Pro machine
+remote desktop
+
+how restart a service and its dependent services on Win7
+manually start the service then manually start each dependent service
+
+do auto start services start if they are manually stopped and the PC restarted
+yes the services will auto start
+
+what is the effect of using service startup type Automatic (Delayed Start)
+the service will auto start after system restart
+
+two tasks that can be done with the Services snapin
+define an action to be performed if a service fails
+view the current status of a service
+
+why use the Dependencies tab of a service's properties dialog
+to identify the components that require a service
+
+how identify the components that require a service
+use the Dependencies tab of the service's properties dialog
+
+what can you see on the Dependencies tab of a service's properties dialog
+what services depend on it and what services it depends on
+
+which tool to ensure certain apps are never run
+uninstall the apps through control panel > programs and features
+
+which tool to remove previously installed app
+use control panel > programs and features
+
+how let a Win10 domain machine install apps from the Windows Store
+connect the domain user to a Microsoft account
+
+how allow install of internal apps without Administrator approval
+configure SmartScreen with 'Warn but don't require administrator approval'
+
+three steps to install virtual machine with Internet and UEFI support on Win10
+enable hyper-v -> create external virtual switch -> create gen2 virtual machine
+
+what kind of hyper-v virtual machine supports UEFI
+a generation 2 virtual machine
+
+what is a hyper-v internal virtual switch used for
+connectivity between VMs and the hyper-v host
+
+what is a hyper-v external virtual switch used for
+connectivity to external networks
+
+User Account Control configured to Never Notify and you run an app that needs Admin permissions
+the changes are automatically denied
+
+what does User Account Control do on Win7
+prevents unauthorized installations and system changes
+
+two results of choosing Never Notify for User Account Control
+admins won't be prompted and standard users cannot perform administrative tasks
+
+two tasks that will trigger User Account Control prompt for elevation
+installing an app and creating a new user account
+
+which tool to remove spyware from Win7
+windows defender
+
+which tool for realtime protection against spyware and to scan for spyware on Win7
+windows defender
+
+why would you use the Malicious Software Removal tool
+to scan for and remove malware

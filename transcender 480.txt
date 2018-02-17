@@ -1,0 +1,278 @@
+﻿Part One
+Document Structures and Objects
+
+convert html to html5
+replace table with article
+replace th with header
+replace p and font with h1 and h2
+replace bottom td with aside
+remove tr and td elements
+
+what is obj.display function
+obj.display function is associated with the MsgGen object
+
+what happens when you pass an argument to a function that takes none
+the argument is ignored
+
+what does this reference in a function 
+the current object variable and no a global variable
+
+display email textbox if checkbox checked
+toggle display with style.visibilty = "visible" or "hidden"
+
+what is display function (with no object)
+function not associated with object
+
+difference with applyElement and appendChild
+applyElement will only create 1 element even if clicked twice
+
+what does style.textTransform = "capitalize"
+makes every word capitalized
+
+how position overlapping squares
+use absolute positioning so all measurements are relative to parent
+
+GeoLocation get user position one time only
+getCurrentPosition
+
+GeoLocation track user position which may change as user uses app
+watchPosition
+
+GeoLocation stop listening to updates of position
+clearWatch
+
+get JSON from text file and populate articles variable
+Author.prototype.loadArticles = function(file)
+  var curObj = this;
+  $.getJSON(file, function(data)
+       curObj.articles = data.articles;
+
+define a WebColor object to represent hex colors
+var WebColor = function (r,g,b)
+    this.red = parseInt(r, 16);
+    ....
+WebColor.prototype.toRGB = function()
+    return
+       red: parseInt(this.red, 10),
+       ...
+
+html5 optional content can be open or closed
+<details>
+
+html5 header for details
+<summary>
+
+html5 a section of hyperlinks for site navigation
+<nav>
+
+html5 supplemental information
+<aside>
+
+use what property to define a custom method
+prototype
+Array.prototype.randomize = function() {
+   //logic to randomize elements
+};
+
+store data across all sessions without expiration
+window.localStorage
+
+object literal notation
+var ns1 = {
+  int: 0,
+  increment: function() {this.int++;}
+  decrement: function() {this.int--;}
+}
+
+object module pattern
+var ns2 = (function() {
+  var int = 0;
+  return {
+    int: int,
+    increment: ns1.increment,
+    decrement: ns1.decrement
+  };
+})();
+
+show video with volume controls
+use <video> element then use javascript to set the controls attribute to true
+document.getElementById('movie').controls = true;
+
+ensure web site is available offline
+Application Cache
+
+before drawing a simple 2d shape use what lines
+<canvas id="cvsMain" width="500" height="500"/>
+var cvs = document.getElementById('cvsMain')
+var ctx = cvs.getContext('2d')
+
+to display a <span> element on its own line like a div
+set the display property to "block"
+
+Part Two
+Program Flow
+
+change background color when user reaches and leaves controls
+use onfocus and onblur
+
+associate events with functions
+addEventListener, attachEvent
+
+inaccessible to web workers
+<canvas>, <svg>, Local Storage
+
+disable button
+btn.disabled = true;
+
+list item or entire list
+if (salesTax[state])
+   return salesTax[state]
+else
+   var states = ""
+   for(var s in salesTax)
+      states += s + " "
+   return states
+
+ajax success property
+request completes with no errors
+
+raise the click event from a javascript function
+dispatchEvent, fireEvent
+
+ajax most recent article must wait for request to complete
+.ajax
+  async: false
+  cache: false
+  dataType: xml
+  type: POST
+  url: "blah"
+  success: function (xmlData)
+     $('breaking-news).html....
+
+check code with leading zeroes
+check as a string, use === to avoid conversion
+
+web worker
+send data with postMessage and receive data with onmessage
+
+web messaging send login credentials
+postMessage
+
+web messaging callback
+window.addEventListener("message", function(msg) 
+   displayProduct(msg.data)
+
+what can web workers do
+loading external xml data
+loading and execution of external javascript files
+
+Part Three
+Data Access and Security
+
+input type email
+type="email"
+
+input is required
+required="required"
+
+input must be number
+type="number"
+
+javascript append hyperlink
+encodeURIComponent
+
+javascript retrieve hyperlink
+decodeURIComponent
+
+ajax form authenticate with web service
+$.ajax
+  type: POST
+  contentType: utf8
+  url: "http://server/service.asmx/page"
+  data: "some data"
+  dataType: 'json'
+  success: onSuccess
+  error: onError
+  username:'name'
+  password:'password'
+
+deserialize form data
+decodeURIComponent
+
+xml file get username tag contents
+.getElementsByTagName('username')[0].childNodes[0].nodeValue
+
+begin with one or more digits
+pattern="\d+"
+
+either hyphen or colon
+pattern="[-:]"
+
+uppercase letter
+pattern="[A-Z]"
+
+javascript verify field contains data
+.getElementById('pword').value.length > 0;
+
+five digit number
+[0-9]{5}
+
+one or two lower case letters
+[a-z]{1,2}
+
+three uppercase letters
+[A-Z]{3}
+
+not the lowercase a
+[^a]
+
+zero or one match (but not more than one)
+?
+
+password value
+document.getElementById('pword').value
+
+verify pword field contains a value
+pwd != ""
+
+XMLHttpRequest some data received
+readystate_interactive
+
+submit arguments from standard HTML form using POST
+toJSON, serializeArray
+
+ensure data is always current and actions wait until request completes
+async: false, cache: false
+
+validate quantity contains a number
+  !isNaN(document.getElementById('qty').value
+
+markup quantity field only numeric and required
+type="number", required="required"
+
+account info object
+var accountInfo
+  id: 1001
+  credentials:
+     username: "name"
+     password: "pword"
+
+reference username property of the credentials property of the acct object
+acct.credentials.username
+
+info always current and page must wait for converted value
+async:false, cache:false
+
+event to update label based on current state of XMLHttpRequest
+onreadystatechange
+
+associate XMLHttpRequest with handleLoading function
+use onreadystatechange event
+
+pattern nine-digit alphanumeric
+(\d|\w){9}
+
+Part Four
+Using CSS3
+
+

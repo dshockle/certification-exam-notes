@@ -1,0 +1,641 @@
+float numbers
+a: append F after the number
+   use e for scientific notation and _ for thousands
+
+generics what does <? extends type> mean
+a: the ? extends designates an upper bound for the allowed types
+
+use an array like a list
+a: List<Number> numlist = Arrays.asList(numbers);
+
+resources in a try with resources statement
+a: must implement the AutoCloseable interface
+
+using a String in a switch statement
+a: comparisons in case labels are case-sensitive
+
+to compile method that includes File operations
+a: throws clause with IOException or
+   add IOException to catch statement or
+   catch Exception 
+
+try with resources with StringReader and StringWriter
+a: catch IOException
+
+three ways to assign a byte literal
+a: byte b = 11; b = 0b1011; b = 0xB;
+
+generic collections example
+a: Map<Integer, List<String>> maplist = new HashMap<>();
+
+generic arraylist example
+a: List<Map<String,Integer>> wordrank = new ArrayList<>();
+
+generic collection ByteBuffer and subtypes
+a: List<? extends ByteBuffer> bblist = new ArrayList<>();
+
+underscores in numeric literal limitation
+a: can only be placed between digits in a number
+
+long numbers
+a: append L to the end
+
+underscores in numeric literal wierdness
+a: you can double up, 345__423_123L;
+
+catch parameter
+a: implicitly final cannot be set to a new exception
+
+catch multiple exceptions
+a: separate types with | operator or catch parent Exception
+
+resources in a try with resources statement
+a: can only be assigned, not reassigned
+
+literal values representing decimal 192
+a: 0b1100_0000 (binary) and 0xC_0 (hexadecimal)
+
+hexadecimal literal numbers
+a: prepend 0x to the number
+
+Map<Double, List<String>> grades=new HashMap<Double, ArrayList<String>>();
+a: compilation fails since List doesn't match ArrayList
+   type parameters must match if not inferred
+
+to catch two exceptions in one catch statement
+a: use | to separate them, note they can be in either order
+
+when you try to read file that doesn't exist
+a: java.nio.file.NoSuchFileException
+
+when doing file operations in a method
+a: you must catch IOException or use throws IOException
+
+binary numbers
+a: prepend 0b to the numbe
+
+switch case issues
+a: need break to prevent fall-through
+   Strings in cases are case-sensitive
+
+retrieve an array of exceptions fron a try with resources statement
+a: Throwable.getSuppressed
+
+what prints System.out.printf("Hi %s.", null);
+a: prints out Hi null.
+
+to use a class in a try with resources
+a: it must implement AutoCloseable interface
+
+what prints System.out.println("Num " + 0b1010_1011_0111);
+a: Num 2743 // note it is printed in decimal form by default
+
+rethrown exceptions in multi-catch blocks
+a: associated try block an throw the rethrown exception
+
+rethrown exceptions and types
+a: can be a supertype of the catch parameter
+   can be a subtype of the catch parameter
+
+if an exception is thrown from a try block 
+a: exceptions thrown by try with resources are suppressed
+
+to access suppressed exceptions
+a: use the getSuppressed method
+
+the getSuppressed method
+a: returns an array of exceptions thrown by a try with resources
+
+multiple resources declared in a try with resources
+a: close method of each is invoked in reverse order of instantiation
+
+FileReader with a non-existent file
+a: runtime error, FileNotFoundException
+
+try catch multicatch statement
+a: declared exception cannot be subclasses
+
+Factory design pattern
+a: instance member invoked to create concrete object using a 
+   common interface or abstract class
+
+coupling in Factory design pattern
+a: loose coupling between factory and product classes
+
+Singleton design pattern
+a: private constructor, getInstance method
+   if Class.instance == null
+       instance = new Class
+   return instance
+
+Polymorphism
+a: methods in subclasses provide unique implementation in superclass
+
+Transfer Object pattern
+a: a data class is concerned only with storage and read/write access to
+   its instance members. typically serializable and getters and setters
+
+what method applies Singleton class
+a: public static synchronized MyClass getInstance()
+
+simplified example of factory pattern
+a: public class ClassA
+       public ClassB getInstance
+            return new ClassB
+
+simplified example of generalization
+a: public class ClassA extends ClassB
+       public ClassA
+           super();
+
+what is generalization
+a: a type of IS-A relationship called inheritance
+
+composition and generalization both do what
+a: aggregate implementation found in multiple classes
+
+Factory Method methods
+a: various "get instance" methods
+
+what is composition
+a: a Whole-Part relationship, eg a class contains a list
+
+Data Access Object pattern
+a: methods for CRUD, Create Read Update and Delete operations
+
+composition relationship
+a: container class methods can delegate to the constituent class
+   method delegation is also called request forwarding
+
+which two design patterns use the getInstance method
+a: Singleton and Factory
+
+constructor access for class implementing Singleton pattern
+a: access modifier of constructor should be private
+
+three methods used in DAO pattern
+a: createMyClass, deleteMyClass, getMyClass
+
+simplified example of composition
+a: public class ClassA
+       private ClassB instance
+       public ClassA
+           instance = new ClassB
+       public void doWork
+           instance.doWork
+
+What pattern is this Manager manager = new Manager.getManager();
+a: Singleton pattern
+
+Factory classes also usually implement what other pattern
+a: Singleton pattern
+
+What pattern is this:
+   public class GameManager
+      public Game createGame(String type)
+         //omitted
+      return game
+a: Factory pattern
+
+what pattern is this: public class CardGame extends Game
+a: Generalization pattern
+
+what pattern is this: 
+   public static synchronized Manager getManager()
+      if (manager == null)
+          manager = new Manager
+      return manager
+a: Singleton pattern
+
+three methods found in Factory Method pattern
+a: LogManager.getLogManager, DriverManager.getConnection, 
+   DriverManager.getDriver
+
+in Factory pattern what method instantiates
+a: a static public factory method performs class instantiation
+
+what UML relationship: class contains list and iterator
+a: Composition
+
+refer local testDB using java db embedded driver
+a: jdbc:derby:testDB
+
+types of Statement objects
+a: CallableStatement objects support both input and output params
+
+ResultSet object default values
+a: CONCUR_READ_ONLY and TYPE_FORWARD_ONLY
+
+class executes stored procedures with input and output params
+a: CallableStatement
+
+methods needed to establish connection using jdbc 4
+a: DriverManager.getConnection, DataSource.getConnection
+
+make two updates execute as a single transaction
+a: connection object setAutoCommit(false) method
+   after all updates, connection object commit method
+
+give a RowSetFactory object what three methods create a 
+rowset object that supports XML read write operations
+a: createFilteredRowSet, createJoinRowSet, createWebRowSet
+
+specify a ResultSet object supports forward and backward relative
+positioning and absolute positioning of the cursor
+a: TYPE_SCROLL_INSENSITIVE, TYPE_SCROLL_SENSITIVE
+
+create a connected RowSet object
+a: JdbcRowSet rs = new JdbcRowSetImpl();
+   RowSetFactor factory = RowSetProvider.newFactory();
+   JdbcRowSet rs = factory.createJdbcRowSet();
+
+method to perform SQL UPDATE operations
+a: executeUpdate
+
+what happens if you use executeQuery method to perform SQL UPDATE
+a: a SQLException occurs
+
+using JDBC 4
+a: DriverManager.getConnection method will load suitable device drivers
+
+PreparedStatement objects
+a: offers reduced execution time over runnign same Statement object
+   multiple times
+
+three RowSet sub-interfaces support XML read/write operations
+a: WebRowSet, JoinRowSet and FilteredRowSet
+
+by default cursor starts out pointing where
+a: before the first row
+
+to more cursor to next item
+a: Connection, Statement, ResultSet, rs.next()
+
+establish db connection through URL
+a: Connection cn = DriverManager.getConnection(cnURL);
+
+Connection object in try with resources statement
+a: Connection object is closed after try block runs
+
+given this: ResultSet rs = statement.executeQuery(query);
+which method should you invoke to access the first row
+a: next 
+
+which isolation level prevents dirty reads but allows phantom reads
+a: TRANSACTION_READ_COMMITTED
+
+what does getMajorVersion return with jdbc.mysql driver
+a: 5
+
+what Connection method will return values in a transaction 
+to a specified save point
+a: rollback
+
+what does the Connection class rollback method do
+a: returns modified values to the previous values or last save point
+
+JDBC transactions
+a: by default SQL statements are committed automatically
+
+what does a scrollable result set support
+a: arbitrary backward and forward movements
+
+example of prepared statement
+a: Connection cn = DriverManager.getConnection(dbURL);
+   String query = "SELECT Name FROM Customer WHERE City=?";
+   PreparedStatement stmt = cn.prepareStatement(query);
+   stmt.setString(1, "Atlanta");
+   ResultSet rs1 = stmt.executeQuery();
+
+examples of disconnected RowSet objects
+a: CachedRowSet and FilteredRowSet
+
+disconnected RowSet objects
+a: JoinRowSet has capabilities of WebRowSet plus SQL JOIN capability
+
+without adding jdbc driver to class path what happens
+a: SQLException with message No suitable driver found
+
+how fix error No suitable driver found
+a: add jdbc driver jar file to the class path
+
+if a variable is declared before a try block
+a: it is still available after the try block
+
+implement fork/join strategy
+a: if (work is small enough)
+      perform work
+   else
+      split work into two pieces
+      invoke the two pieces and await results
+
+differences between RecursiveAction and RecursiveTask
+a: RecursiveAction cannot return a result
+   getRawResult resturns null for RecursiveAction
+
+if a counter is shared without locking or volatile
+a: current value of counter may not be visible to all threads
+
+modification operations on an ArrayList using an iterator
+a: are not thread safe
+
+if a RecursiveTask is invoked using the fork method
+a: worker thread results should be merged using join
+
+the join method blocks until what
+a: all worker threads have completed
+
+give the following how do you return the result
+   AsyncTask t1 ...;t1.fork();AsyncTask t2...;
+a: return Data.combine(t1.compute(), t2.join());
+
+when calculating a return value what is invoked last
+a: the join method
+
+how make the following thread safe
+   List<String> list = new ArrayList<String>();
+a: read/write ops should be in a synchronized block or else
+   replace ArrayList with CopyOnWriteArrayList class
+
+ConcurrentMap methods add entry for key only if key exists
+a: replace(key, value); replace(key, oldvalue, newvalue);
+
+advantage of Lock objects over implicit locks in synchronized blocks
+a: can stop from acquiring a lock if it is unavailable or times out
+
+what does this do: 
+   Executor ex = Executors.newScheduledThreadPool(5);
+a: five threads created each supporting one task
+
+provide visibility and atomicity using shared variables
+a: synchronized
+
+what does synchronized keyword do
+a: provides visibility and atomicity across threads
+
+ExecutorService methods supporting accessing task results w/o blocking
+a: invokeAll, submit
+
+ExecutorService class newSingleThreadExecutor method
+a: single threaded pool supporting queuing of tasks
+
+how ensure Thread object runs in a single thread
+a: Executors.newSingleThreadExecutor
+
+difference Executor and ExecutorService
+a: ExecutorService provides methods for Runnable and Callable objects
+
+thread race condition
+a: when threads are competing for the same resource
+
+collections in java.util.concurrent
+a: read/write access to these is thread-safe
+
+want concurrent reads but single thread writes
+a: implement a custom lock with the ReadWriteLock interface
+
+livelocked threads
+a: too busy responding to each other to do other work
+
+signature of RecursiveAction class compute method
+a: protected void compute()
+
+three common liveness problems
+a: deadlock, livelock, starvation
+
+method to return result  using fork/join with recursion
+a: RecursiveTask.compute
+
+create random numbers in multi-threaded application
+a: ThreadLocalRandom
+
+run Callable object c after 10 second delay
+a: Executors.newScheduledThreadPool(1) or schedule(c,10,TimeUnit.SECONDS)
+
+ExecutorService class methods that support single Runnable argument
+a: submit, execute
+
+Runnable objects
+a: can be run using the execute method of the ExecutorService interface
+
+what in java.util.concurrent can poll or cancel a task on a 
+worker thread without blocking
+a: Future
+
+what does Future interface do
+a: can poll or cacnel a task running on a worker thread w/o blocking
+
+ReadWriteLock interface
+a: there are two locks, for read-only and for read-write operations
+
+Callable objects
+a: cannot be run using the execute method of the ExecutorService
+   can be run using the submit method of the ExcecutorService
+
+which Executors method creates a thread pool of three threads
+a: newScheduledThreadPool //int argument number of threads
+
+threads busy exchanging locks
+a: Livelock
+
+which interfaces are both Callable and Runnable as worker threads
+a: ExecutorService and ScheduledExecutorService
+
+reader threads cannot read while writer is writing to file
+a: Deadlock
+
+three collections that avoid memory errors in multi-threaded apps
+a: BlockingQueue, ConcurrentHashMap, CopyOnWriteArrayList
+
+should be invoked before reading using ReadWriteLock object lk
+a: lk.readLock().lock(); 
+
+after read is done release read lock of ReadWriteLock object lk
+a: lk.readLock().unlock();
+
+given this which code will run the task using a worker thread
+   ExecutorService ex = Executors.newCachedThreadPool();
+   Callable c = new CalcThread();
+a: ex.submit(c);
+
+display money using UK symbol
+a: dFormat = NumberFormat.getCurrencyInstance(Locale.UK);
+
+four ways to create a Locale object
+a: Locale.Builder class, Locale constructors, constants in 
+   the Locale class, Locale.forLanguageTag factory method
+
+two ways to output Eastern Daylight Time
+a: SimpleDateFormat df = new SimpleDateFormat("zzz", 
+      Locale.US or Locale.UK);
+   System.out.println(df.format(new Date()));
+
+if default language is english which three properties files
+could be loaded for a locale that specifies Spanish
+a: TestBundle_es, TestBundle_es_US, TestBundle_es_ES .properties
+
+output Germany
+a: new Locale("de", "DE").getDisplayCountry()
+
+output German
+a: new Locale("de", "DE").getDisplayLanguage()
+
+MesssageTextBundle matching locales
+a: _fr_CA matches French and Canada, _fr matches French and not Canada
+
+props file match Locale.setDefault(new Locale("French", "Canada"))
+a: MessageBundle_fr_CA.properties
+
+properties files associated with ResourceBundle
+a: props use name-value pairs, files use .properties extension
+   there should be a separate file for each supported language
+
+what is default properties file
+a: MessageTextFile.properties
+
+when does default properties file load
+a: when there is no match for language or region
+
+internationalized apps
+a: can run multiple languages without recompilation
+   localized by adding locale specific components and text
+
+extension for properties file associated with a resource bundle
+a: .properties
+
+initialize Locale using Locale.Builder class
+a: Locale loc = new Locale.Builder().setLanguage("en")
+                    .setScript("Latn").setRegion("UK").build();
+
+display date in DD-MMM-YYY format
+a: DateFormat.DEFAULT, Locale.UK
+
+example ResourceBundle code
+a: ResourceBundle.getBundle("GUILabels", Locale.FRENCH);
+
+what does this reference: Locale loc = new Locale("en-UK");
+a: English language and UK region
+
+how do you reference English language and UK region
+a: Locale loc = new Locale("en-UK");
+
+what are localized in an internationalized application
+a: Status msgs, GUI components, Currency and dates, Log files
+
+what does a locale do
+a: identifies both a specific language and region
+
+example resource bundles loaded for French speakers in Canada
+a: LabelsBundle_fr.properties, LabelsBundle_fr_CA.properties
+
+what is the result: Locale loc = new Locale("fr", "CA");
+a: application references the French Canadian locale
+
+what is wrong: Files.newDirectoryStream(dir, (*.class|*.jar"))
+a: glob pattern is not using subpatterns so nothing matches
+
+enumerate files larger than 8 kb
+a: use a custom DirectoryStream.Filter object when
+   invoking the Files.newDirectoryStream method
+
+FileVisitor interface
+a: FileVisitResult.CONTINUE means all entries will be visited
+
+what does this retrieve path.subpath(2,4).toString()
+a: path part two and three //first part after drive is zero
+
+if HTTP provider not installed what does new URI(...) do
+a: runtime error FileSystemNotFoundException
+
+attributes supported by BasicFileAttributeView
+a: creationTime, lastAccessTime, lastModifiedTime
+
+additional attributes supported only by DosFileAttributeView
+a: archive, hidden, readonly, system
+
+PathMatcher interface
+a: FileSystem class provides its own PathMatcher object
+
+What does AclFileAttributeView subinterface do
+a: allow permissions on file system objects for identiy other than owner
+
+what StandardCopyOption will copy or move file as single operation
+a: ATOMIC_MOVE
+
+additional attributes supported by the PosixFileAttributeView
+a: group, permissions
+
+WatchService class take method
+a: retrieves and removes next watch key
+   waits if no watch keys are in the queue
+
+StandardOpenOption enumeration
+a: DSYNC will not sync metadata, TRUNCATE_EXISTING will overwrite
+
+what FileVisitResult will not visit file and directory entries
+a: preVisitDirectory SKIP_SIBLINGS, preVisitDirectory SKIP_SUBTREE
+
+try to use unix style / on Windows
+a: runtime error IllegalArgumentException
+
+recursively walk the length of the directory following all links
+a: File.walkFileTree...FileVisitOption.FOLLOW_LINKS), Integer.MAX_VALUE
+
+what does FileOwnerAttributeView class setOwner(owner) do
+a: sets the owner of teh file, owner controls permission assignment
+
+Watch Service API
+a: poll file system if it doesn't support file change notifications
+
+PathMatcher interface
+a: contains method matches that accepts a Path and returns a Boolean
+
+create new file with sync content and metadata
+a: StandardOpenOption.CREATE and StandardOpenOption.SYNC
+   StandardOpenOption.CREATE_NEW and StandardOpenOption.SYNC
+
+what result String res=path1.resolve(path2).toString();
+a: string concatenating the paths, Path1\Path2
+
+initial state of watch key when object registered with watch service
+a: ready
+
+WatchService class which methods retrieve and remove next watch key
+a: poll and poll(time unit)
+
+Files.move(sPath, dPath, StandardCopyOption.ATOMIC_MOVE);
+a: copies file, removes from source and renames in single operation
+
+StandardOpenOption.APPEND
+a: content of file is modified not replaced
+
+StandardOpenOption.DSYNC
+a: metadata is not synchronized with underlying disk
+
+try to use BasicFileAttributeView with owner attribute
+a: compilation fails, interface does not support this attribute
+
+glob file patterns .class and .jar files
+a: {*.class,*.jar}, *.{class,jar}
+
+only match .jar or .class files
+a: FileSystem.getDefault().getPathMatcher("glob:*.{jar,class}");
+
+StandardWatchEventKinds class OVERFLOW event
+a: indicates an event has been lost or discarded
+
+What event type indicates that an event has been lost or discarded
+a: StandardWatchEventKinds.OVERFLOW
+
+FileOwnerAttributeView interface
+a: provides the additional attribute: owner
+
+two interfaces in java similar to unix find utility
+a: FileVisitor and PathMatcher
+
+state of watch key when event from watchable object is detected
+a: signalled
+
+return string with full path including windows-style drive letter
+a: path.normalize().toString();
+

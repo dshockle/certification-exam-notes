@@ -1,0 +1,291 @@
+tid column: vals unique, vals auto generated
+a: int datatype, IDENTITY property
+
+updateable view showing data from two tables
+a: include both tables and define INSTEAD OF triggers
+
+column make every val unique
+a: primary key 
+
+best way to change small part of simple view
+a: ALTER VIEW name AS new definition
+
+want procedure if user doesn't have perms to other databases
+a: EXECUTE AS CALLER
+
+if Department table changed want to update Employee table
+a: ALTER TABLE Employee ADD CONSTRAINT fke FOREIGN KEY dpi
+   REFERENCES Department(id) FOR UPDATE CASCADE
+
+you created a primary xml index named p now create 
+secondary xml index for eaching the Active attribute value
+a: CREATE XML INDEX a ON Customer(Demo) USING XML INDEX p FOR PATH
+
+ensure default value entered for column if user omits value
+a: add a DEFAULT constraint
+
+query the number of people hired in the last 30 days
+a: SELECT COUNT (*) FROM Employee WHERE CONVERT(date, GETDATE()) < 
+   DATEADD(DAY, 30, hire_date)
+
+need sum amount column by month, no updates
+a: Indexed View
+
+table created with (id int identity(4,3), name varchar(25));
+what is value of id on second row
+a: 7 which is 4 + 3 
+
+protect procedure from being viewed by another programmer
+a: WITH ENCRYPTION
+
+create an index to speed queries that use aggregation (SUM, AVG)
+a: CREATE NONCLUSTERED COLUMNSTORE INDEX name ON table(col,col,col)
+
+set value to 0 if conversion unsuccessful
+a: use COALESCE function
+
+value of one column must always be later than value of other column
+a: Trigger
+
+retrieve optimized query plans cached or executing
+a: query sys.dm_exec_text_query_plan
+
+improve performance of a trigger
+a: remove any cursor in trigger replace it with set processing
+   add index to column in WHERE clause
+   reorg an existing index in WHERE if there is one
+   remove ORDER BY clause if not needed
+
+get all values from one table and matching rows from another
+a: LEFT JOIN or LEFT OUTER JOIN
+
+limit user access to table and give them simplified view of data
+a: View or Stored Procedure or User Defined Table Function
+
+if a column has a UNIQUE constraint what is built for it
+a: a non-clustered index
+
+rotate column and display summarized data
+a: use PIVOT
+a: SELECT col,col,col FROM (SELECT col,col FROM table) AS s1
+   PIVOT (COUNT(id) FOR col IN (col,col,col)) AS s1;
+
+SQL version of Switch statement
+a: CASE
+   WHEN State = 'WA' THEN .5*Amount
+   ELSE 0.00
+   END
+
+what does MERGE do
+a: perform INSERT or UPDATE as appropriate
+
+give user permission to run procedure
+a: GRANT EXECUTE ON db.proc TO PUBLIC GO
+
+specify parameter to procedure
+a: use @ character, SELECT Name FROM Employee WHERE ID = @PID
+
+get query result as xml
+a: FOR XML AUTO
+
+ensure transaction will rollback if procedure raises runtime error
+a: XACT_ABORT ON
+
+create a view
+a: CREATE VIEW name WITH SCHEMABINDING AS
+   SELECT t.col, t2.col
+   FROM dbo.table t, dbo.table t2
+   WHERE t.col = t.col
+   WITH CHECK OPTION
+
+replace column in view
+a: ALTER VIEW name AS SELECT col,col,col FROM table
+
+if statement raises exception execution should continue with next statement
+a: add COMMIT TRANSACTION
+
+grant employees permissions to produce reports
+a: ensure they don't have permission to table through role
+   create view on table with restrictive WHERE clause
+   assign the employees SELECT permission on the view
+
+get only data included in both result sets
+a: INTERSECT or INTERSECTION
+
+triggers
+a: can have a negative impact on performance
+   cannot call another trigger
+   can call a stored procedure or function
+   if data mod causes trigger and trigger aborts mod is rolled back
+
+get results that don't match criteria
+a: use NOT IN or <> ALL
+
+summarize table with totals subtotals and grand total
+a: GROUP BY GROUPING SETS((col,col),(col,col),(col,col))
+   GROUP BY ROLLUP(col,col,col)
+
+summarize data by category with highest count categories first
+a: GROUP BY category ORDER BY count DESC
+
+how speed queries that use a particular column
+a: add a non-clustered index on that column
+
+you have a frequently used query on a huge table
+a: Indexed View
+
+value must be whole number, value must be unique
+a: bigint type and UNIQUE constraint
+
+signal error in SQL statement and store error in application log
+a: RAISERROR('text', 16,1) WITH LOG
+
+make sure column is never blank
+a: NOT NULL constraint
+
+improve performance of query that uses user defined function
+a: replace udf with a subquery
+
+invoke table valued function for every row in a table
+a: CROSS APPLY or OUTER APPLY
+
+what does a view WITH CHECK OPTION do
+a: ensure no data mods can be made through view that would 
+   violate the view's definition
+
+to be a parent what must a column be
+a: to be a parent a column must be unique or the primary key
+
+display disk activity for the following query
+a: SET STATISTICS IO ON
+
+query slow estimated rows does not match actual rows
+a: execute UPDATE STATISTICS on all tables used
+
+most basic table type in a database
+a: a heap table, rows stored in an extent where space available
+
+return number of rows specified by user
+a: SELECT TOP(@Count) Name FROM Customer
+
+what does NTILE function do
+a: ranking function, based on rank and specified number of groups
+
+reduce fragmentation of index without taking it offline
+a: ALTER INDEX name ON table REORGANIZE
+
+move rows to a backup table before deleting them
+a: INSTEAD OF trigger
+
+how ensure only specific values can appear in a column
+a: Check Constraint
+
+what advantages to ALTER VIEW rather than drop and recreate
+a: permissions carry over to new view
+   objects that depend on view remain valid
+
+make a query use less memory
+a: EXECUTE sp_configure 
+   'optimize for ad hoc workloads',1, RECONFIGURE;
+
+stored procedure slow for one category with a million rows
+a: add an OPTIMIZE FOR hint to the query
+
+compare two columns with different data types
+a: CONVERT or CAST
+
+val unique across all dbs and auto generated
+a: uniequeidentifier, newsequentialid, rowguidcol property
+
+need to calculate values in newly added column for each row
+a: UPDATE table SET col = col * col; 
+
+create view example
+a: CREATE VIEW name
+   AS SELECT *
+   FROM table
+   WHERE column = value
+   WITH CHECK OPTION;
+
+what data types support conversion to xml
+a: varbinary and nvarchar
+
+updates should not cause conflicts, reads should not block updates
+a: ALTER DATABASE name SET READ_COMMITTED_SNAPSHOT ON
+   before executing the stored procedure
+
+when you add a primary key what additional object is created
+a: a clustered index
+
+if an error occurs work should not be committed
+a: place existing SQL statements in a TRY block
+   add BEGIN TRANSACTION before BEGIN TRY
+   add COMMIT TRANSACTION before END TRY
+   add ROLLBACK TRANSACTION to CATCH block
+
+let users access database even if it is moved to another server
+a: create domain users and migrate db to a partially contained db
+
+minimize disk space used by table
+a: enable page compression for table
+
+create referential integrity between two tables
+a: add a foreign key constraint
+
+what does ISNULL function do
+a: if first arg is not null returns it otherwise returns second arg
+
+to ensure only clustered indexes and nested loops are used
+a: FORCEPLAN ON
+
+optimize transaction logging and lock table until transaction end
+a: TABLOCK, HOLDLOCK
+
+what is a Common Table Expression CTE
+a: a temporary result set scoped only within the statement
+
+xml data type
+a: support fine access indexing validation not bigger than 2 gb
+
+copy rows to new table
+a: SELECT ... INTO
+
+spatial aggregate methods
+a: UnionAggregate, CollectionAggregate, ConvexAggregate, EnvelopeAggregate
+
+reporting error numbers how cast error numbers
+a: NVARCHAR, CAST @@ROWCOUNT AS NVARCHAR
+
+what join best for large tables using sorted indexes
+a: MERGE, merge join
+
+what makes a function 'deterministic'
+a: always gives same output when supplied same input
+
+what clauses are used in a Common Table Expression
+a: GROUP BY, HAVING, WITH
+
+what is FOR clause for
+a: generate xml or scan rows with a browser cursor
+
+what is INTO clause for
+a: copy data from SELECT into a target table
+
+what is OVER clause for
+a: partition and order a result set
+
+return results in the form of a table
+a: use table-valued UDF or inline UDF
+
+block efforts to drop table
+a: column beingn referenced by foreign key in another table
+   user is ni the process of adding a NOT NULL constraint to table
+   user has pending transaction on table
+   function in table was created with schema binding
+
+will not block efforts to drop table
+a: table contains nulls and duplicate values in primary key columns
+
+a column should require a value when a new row is inserted or 
+existing row is modified
+a: add a NOT NULL constraint on the column
